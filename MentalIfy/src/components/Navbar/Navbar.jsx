@@ -6,22 +6,29 @@ import {
     REGISTER_URL,
 
 } from '../../constants/urls'
+import logo from '../../img/logo.png'
+import {Link} from 'react-router-dom'
+import styles from "./Navbar.module.css";
 
-import styles from './navbar.module.css'
-
-export function navbar() {
+export function Navbar() {
 
     return (
-        <div>
+        <div className={styles.container}>
 
-            {/* <nav>
-                <a href="#">Contacto</a>
-                <a href="#">Especialistas</a>
-                <a href="#">Testimonios</a>
-                <a href="#">Login</a>
-            </nav> */}
+            <div className={styles.bar}>
+                <Link to={HOME_URL} className={styles.link}>
+                    <img src={logo} alt="logo mentalIfy" className={styles.loguito} />
+                </Link>
+                <nav className={styles.nav}>
+                    
 
-            <h1>Gola</h1>
+                    <Link  className={styles.links}>
+                        <h1>Especialistas</h1>
+                    </Link>
+
+                    <button className={styles.loginButton}>Login</button>
+                </nav>
+            </div>
 
         </div>
     )

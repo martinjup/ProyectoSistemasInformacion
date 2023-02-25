@@ -1,9 +1,6 @@
 import './home.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import headerImg from '../../img/header.jpeg'
-import logo from '../../img/logo.png'
-
 
 export function Home() {
     return (
@@ -12,15 +9,7 @@ export function Home() {
             <div >
                 <header className='header home'>
                     <div className='header-container header-content'>
-                        <div className='bar'>
-                            <a className='link' href="/">
-                                <img src={logo} alt="logo mentalIfy" />
-                            </a>
-                            <nav className='nav'>
-                                <a href="#"> Especialistas </a>
-                                <button className='login-button'>Login</button>
-                            </nav>
-                        </div>
+                        
 
 
 
