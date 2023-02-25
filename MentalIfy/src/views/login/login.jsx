@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-{/*Necesito importar auth de firebase con la linea de codigo
-de abajo pero no se cual es la direccion exacta de donde
-sacarlo, help me obi wan*/} 
-{/*import { auth } from "../../firebase";*/} 
+import { auth } from "../../../src/firebase/firebaseConfig";
 
 export function Login ()  {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-  
     const logIn = (e) => {
       e.preventDefault();
       signInWithEmailAndPassword(auth, email, password)
