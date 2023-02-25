@@ -8,7 +8,7 @@ export function UserContentProvider({ children }) {
     const [user, setUser] = useState(null)
     useEffect(()=>{
         onAuthStateChanged(auth,(firebaseUser)=>{
-            console.log(firebaseUser);
+            // console.log(firebaseUser);
             if(firebaseUser){
                 setUser({
                     id: firebaseUser.uid,
