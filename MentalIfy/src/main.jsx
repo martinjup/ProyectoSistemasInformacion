@@ -24,11 +24,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<Layout />}>
           <Route path={HOME_URL} element={<Home />} />
-
+          <Route path={LOGIN_URL} element={<Login />} />
+          <Route path={REGISTER_URL} element={<Register />} />
+          <Route path={REGISTER_DOCTOR_URL} element={<RegisterDoctor />} />
         </Route>
-        <Route path={LOGIN_URL} element={<Login />} />
-        <Route path={REGISTER_URL} element={<Register />} />
-        <Route path={REGISTER_DOCTOR_URL} element={<RegisterDoctor />} />
+        
 
 
       </Routes>

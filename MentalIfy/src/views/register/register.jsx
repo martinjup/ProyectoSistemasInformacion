@@ -7,13 +7,17 @@ import privacyLogo from '../../img/Privacy-policy-logo.png'
 import oEye from '../../img/openEye.png'
 import cEye from '../../img/closedEye.png'
 import { useNavigate } from "react-router-dom";
+import { signInWithGoogle } from '../../firebase/auth-service'
 
 
 
 export function Register(props) {
   const [showPassword, setShowPassword] = useState(false);
+  const handleSigInWtihGoogle = async () => {
+    await signInWithGoogle(); 
+  }
   const navigate = useNavigate();
-  const toggleShowPassword = (event) => {
+  const toggleShowPassword   = (event) => {
     event.preventDefault();
     setShowPassword(!showPassword);
   }
@@ -26,7 +30,7 @@ export function Register(props) {
         <p>¿Ya tienes una cuenta? Inicia Sesión</p>
       </div>
       <div className='headboard'>
-      <img src={googleLogo} alt='Logo Google' className='miniLogos'/>
+      <img src={googleLogo} alt='Logo Google' className='miniLogos' onClick={handleSigInWtihGoogle}/>
       <img src={facebookLogo} alt='Logo Facebook' className='miniLogos'/>
       </div>
       <div className='personalData'>
