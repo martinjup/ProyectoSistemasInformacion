@@ -6,12 +6,13 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: `${process.env.REACT_APP_APIKEY}`,
-  authDomain: `${process.env.REACT_APP_AUTHDOMAIN}`,
-  projectId: `${process.env.REACT_APP_PROJECTID}`,
-  storageBucket: `${process.env.REACT_APP_STORAGEBUCKET}`,
-  messagingSenderId: `${process.env.REACT_APP_MESSAGINGSENDERID}`,
-  appId: `${process.env.REACT_APP_APPID}`
+  apiKey: "AIzaSyDJAj5SN9_9seeWZ0c4hUif8RshmZSAzGc",
+  authDomain: "mentalify.firebaseapp.com",
+  projectId: "mentalify",
+  storageBucket: "mentalify.appspot.com",
+  messagingSenderId: "585714318411",
+  appId: "1:585714318411:web:61224db0cc954248dba1ce",
+  measurementId: "G-PR3GZ3R6JV"
 };
 
 // Initialize Firebase

@@ -1,17 +1,24 @@
 import './home.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { useNavigate } from "react-router-dom";
+import headerImg from '../../img/header.jpeg'
+import logo from '../../img/logo.png'
+import {
+
+    REGISTER_URL,
+
+  
+  } from '../../constants/urls'
 
 export function Home() {
+    const navigate = useNavigate();
     return (
         <div className='content'>
 
             <div >
                 <header className='header home'>
                     <div className='header-container header-content'>
-                        
-
-
 
                         <h1 className='title'>Sé una mejor versión de tí con la terapia en línea</h1>
 
@@ -19,7 +26,7 @@ export function Home() {
 
                     </div>
                     <div className='register'>
-                        <button className='register-button'>Registrate</button>
+                        <button className='register-button' onClick={()=>navigate(REGISTER_URL)} >Registrate</button>
                     </div>
                 </header>
 

@@ -9,9 +9,10 @@ import {
 import logo from '../../img/logo.png'
 import {Link} from 'react-router-dom'
 import styles from "./Navbar.module.css";
+import { useNavigate } from "react-router-dom";
 
 export function Navbar() {
-
+    const navigate = useNavigate();
     return (
         <div className={styles.container}>
 
@@ -26,7 +27,7 @@ export function Navbar() {
                         <h1>Especialistas</h1>
                     </Link>
 
-                    <button className={styles.loginButton}>Login</button>
+                    <button className={styles.loginButton} onClick={()=>navigate(LOGIN_URL)}>Login</button>
                 </nav>
             </div>
 
