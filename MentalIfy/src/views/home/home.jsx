@@ -34,7 +34,7 @@ export function Home() {
 
                     </div>
                     <div className='register'>
-                        <button className='register-button'>Registrate</button>
+                        <button className='register-button' onClick={()=>navigate("/register")} >Registrate</button>
                     </div>
                 </header>
 

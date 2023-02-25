@@ -6,12 +6,13 @@ import facebookLogo from '../../img/Facebook-logo.png'
 import privacyLogo from '../../img/Privacy-policy-logo.png'
 import oEye from '../../img/openEye.png'
 import cEye from '../../img/closedEye.png'
+import { useNavigate } from "react-router-dom";
 
 
 
 export function Register(props) {
   const [showPassword, setShowPassword] = useState(false);
-  
+  const navigate = useNavigate();
   const toggleShowPassword = (event) => {
     event.preventDefault();
     setShowPassword(!showPassword);
@@ -86,6 +87,7 @@ export function Register(props) {
         </div>
         <br />
         <button className='createAccount' type="submit">Crear cuenta</button>
+        <button className='createAccount' onClick={()=>navigate("/registerdoctor")}>Crer cuenta como especialista</button>
     </div>
   );
 }
