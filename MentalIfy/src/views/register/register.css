@@ -1,0 +1,183 @@
+*{font-family: 'Montserrat', sans-serif;
+
+}
+
+input{
+    outline: none;
+    border: none;
+    background-color: #e9e5e5;
+    margin: 7px;
+    border-radius: 7px;
+    padding: 7px;
+
+}
+
+button{
+    outline: none;
+    border: none;
+}
+
+#top{
+    background-color: #6945ff;
+    color: #6945ff;
+    width: 100%;
+    height: 50px;
+}
+
+.headboard{
+    margin: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.miniLogos{
+    width: 25px;
+    margin: 0px 15px 0px 15px;
+}
+
+#privacyLogo{
+    width: 150px;
+}
+
+.personalData{
+    display: flex;
+    justify-content: center;
+}
+
+.leftText{
+    margin: 20px 7px 0px 7px;
+    background-color: #e9e5e5;
+    border-radius: 7px;
+    padding: 7px;
+    width: 46%;
+}
+
+.leftText2{
+    margin: 0px 15px 0px 15px;
+    background-color: #e9e5e5;
+    border-radius: 7px;
+    padding: 7px;
+}
+
+.textLeftContainer{
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+#email{
+    justify-content: center;
+    text-align: center;
+    margin-top: 15px;
+    width: 94%;
+}
+
+.passwordContainer{
+    justify-content: center;
+    display: flex;
+    margin-bottom: 0;
+}
+
+.password{
+    background-color: #e9e5e5;
+    border-radius: 7px;
+    margin: 15px;
+    margin-bottom: 0;
+}
+
+.phone{
+    margin-top: 0;
+    margin-left: 15px;
+    width: 45%;
+}
+
+.separator{
+    justify-content: center;
+    background-color: #6945ff;
+    color: #6945ff;
+    width: 50%;
+    margin: auto;
+    border-radius: 7px;
+    margin-top: 10px;
+}
+
+.calendar{
+    display: flex;
+    width: 50%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendarBox{
+    width: 142px;
+    align-items: center;
+    justify-content: center;
+    margin: 15px 15px 0px 15px;
+}
+
+.calendarText{
+    margin: 15px 15px 15px 15px;
+}
+
+.gender{
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    
+}
+
+.genderValue{
+    border: none;
+    outline: none;
+    background-color: #e9e5e5;
+    padding: 7px;
+    border-radius: 7px;
+    width: 30%;
+    position: absolute;
+    right: 45%;
+}
+
+.createAccount{
+    background-color: #6945ff;
+    color: white;
+    padding: 12px;
+    font-size: medium;
+    margin: 7px;
+    border-radius: 7px;
+    right: 24%;
+    width: 120px;
+}
+
+.specialist{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    right: 45px;
+}
+
+.specialistData{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 10px 30px 10px 0;
+}
+
+#specialty{
+    border: none;
+    outline: none;
+    background-color: #e9e5e5;
+    padding: 7px;
+    margin: 7px;
+    border-radius: 7px;
+}
+
+#resume{
+    height: 200px;
+    text-align: left;
+}
