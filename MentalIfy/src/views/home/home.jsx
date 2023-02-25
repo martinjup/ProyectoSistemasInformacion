@@ -1,11 +1,13 @@
 import './home.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { useNavigate } from "react-router-dom";
 import headerImg from '../../img/header.jpeg'
 import logo from '../../img/logo.png'
 
 
 export function Home() {
+    const navigate = useNavigate();
     return (
         <div className='content'>
 
@@ -18,7 +20,9 @@ export function Home() {
                             </a>
                             <nav className='nav'>
                                 <a href="#"> Especialistas </a>
-                                <button className='login-button'>Login</button>
+                            
+                                <button className='login-button'onClick={() => navigate("/login")}>Login</button>
+                                
                             </nav>
                         </div>
 
