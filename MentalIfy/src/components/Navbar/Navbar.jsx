@@ -11,11 +11,14 @@ import { Link } from 'react-router-dom'
 import styles from "./Navbar.module.css";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext"
+import { logout } from '../../firebase/auth-service';
 
 export function Navbar() {
     const navigate = useNavigate();
     const { user } = useUser()
-    console.log(user)
+    const handleLogout = async () => {
+        await logout()
+    }
     return (
         <div className={styles.container}>
 
@@ -30,8 +33,13 @@ export function Navbar() {
                         <h1>Especialistas</h1>
                     </Link>
                     {!!user && (
-                        <button className={styles.loginButton} onClick={() => navigate("/profile")}>{user.name}</button>
+                        <>
+                        <Link to="/profile" className={styles.links}>
+                            <span> {user.name}</span>
+                        </Link>
 
+                        <button className={styles.loginButton} onClick={handleLogout}>LogOut</button>
+                        </>
                     )}
                     {!user && <button className={styles.loginButton} onClick={() => navigate(LOGIN_URL)}>Login</button>}
                 </nav>

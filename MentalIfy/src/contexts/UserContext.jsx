@@ -15,6 +15,8 @@ export function UserContentProvider({ children }) {
                     email: firebaseUser.email,
                     name: firebaseUser.displayName
                 })
+            }else{
+                setUser(null)
             }
         });
     }, [])

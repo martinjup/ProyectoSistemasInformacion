@@ -1,6 +1,6 @@
 // metodos de autenticacion 
 
-import { signInWithPopup } from "firebase/auth"
+import { signInWithPopup, signOut } from "firebase/auth"
 import { auth, googleProvider } from "./firebaseConfig"
 
 export const signInWithGoogle = async () => {
@@ -15,4 +15,11 @@ export const registerWithEmail = async () => { }
 
 export const signInWithEmail = async () => { }
 
-export const logout = async () => { }
+export const logout = async () => { 
+
+    try {
+        await signOut(auth)
+    } catch (error) {
+        console.log({error})
+    }
+}
