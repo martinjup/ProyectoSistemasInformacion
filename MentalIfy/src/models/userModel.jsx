@@ -20,7 +20,8 @@ export class User {
             phone: this.phone,
             role: this.role,
             gender: this.gender,
-            birthdate: this.birthdate
+            birthdate: this.birthdate,
+            id: uid
         }
 
         setDoc(doc(db, 'users', uid), u)

@@ -35,7 +35,7 @@ export class Doctor {
 
         // console.log(u)
 
-        setDoc(doc(db, 'doctors', uid), u)
+        setDoc(doc(db, 'users', uid), u)
 
     }
 }

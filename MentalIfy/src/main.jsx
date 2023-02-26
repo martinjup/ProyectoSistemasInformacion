@@ -5,17 +5,18 @@ import { Home } from './views/home/home'
 import { Register } from './views/register/register'
 import { RegisterDoctor } from './views/register/registerdoctor'
 import { Login } from './views/login/login'
-// import {Nav} from './components/Navbar/Navbar'
 import './index.css'
+import { Chat } from './views/Chat/Chat'
 import {
   HOME_URL,
   LOGIN_URL,
   REGISTER_URL,
-  REGISTER_DOCTOR_URL
+  REGISTER_DOCTOR_URL,
+  CHAT_URL
 
 } from './constants/urls'
 import { Layout } from './views/Layout/Layout'
-// import {apiKey} from './firebase/firebaseConfig'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -27,8 +28,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path={LOGIN_URL} element={<Login />} />
           <Route path={REGISTER_URL} element={<Register />} />
           <Route path={REGISTER_DOCTOR_URL} element={<RegisterDoctor />} />
+          
+            <Route path={CHAT_URL} element={<Chat />} />
+          
         </Route>
-        
+
 
 
       </Routes>

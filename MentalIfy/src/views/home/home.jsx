@@ -7,6 +7,7 @@ import logo from '../../img/logo.png'
 import {
 
     REGISTER_URL,
+    CHAT_URL
 
   
   } from '../../constants/urls'
@@ -45,7 +46,7 @@ export function Home() {
                     <p>En Mentalify podrás encontrar una gran variedad de psicólogos y
                         psiquiatras con los que podrás agendar un encuentro </p>
 
-                    <div className='profile-button'><button className='perfiles'>Perfiles</button></div>
+                    <div className='profile-button'><button className='perfiles' onClick={()=>navigate(CHAT_URL)}>Perfiles</button></div>
                 </section>
 
                 
