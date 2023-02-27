@@ -15,8 +15,9 @@ function Chats() {
 
       const unsub = onSnapshot(doc(db, 'usersChats', user.id), (doc) => {
         setChats(doc.data())
+        console.log(doc.data())
       })
-
+        console.log(chats)
       return () => {
         unsub()
       }
@@ -26,11 +27,10 @@ function Chats() {
   }, [user.id])
 
 
-  console.log(Object.entries(chats))
+  console.log(chats)
 
   const handleSelect = (u) =>{
     dispatch({type:"CHANGE_USER", payload: u})
-    // console.log(u.name)
   }
   return (
     <div className='chats'>

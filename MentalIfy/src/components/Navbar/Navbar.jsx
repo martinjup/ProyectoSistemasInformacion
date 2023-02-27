@@ -19,6 +19,8 @@ export function Navbar() {
     const handleLogout = async () => {
         await logout()
     }
+
+    console.log(user)
     return (
         <div className={styles.container}>
 
