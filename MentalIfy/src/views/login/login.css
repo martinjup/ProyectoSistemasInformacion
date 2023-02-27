@@ -1,0 +1,31 @@
+*{font-family: 'Montserrat', sans-serif;
+
+}
+
+.headboard{
+    margin: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+#top{
+    background-color: #6945ff;
+    color: #6945ff;
+    width: 100%;
+    height: 20px;
+}
+#form {  
+        overflow: auto; 
+}
+
+.container {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+.boton {
+    width: 15%;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
