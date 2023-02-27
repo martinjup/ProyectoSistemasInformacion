@@ -4,7 +4,13 @@ import ReactDOM from 'react-dom/client'
 import { useNavigate } from "react-router-dom";
 import headerImg from '../../img/header.jpeg'
 import logo from '../../img/logo.png'
+import {
 
+    REGISTER_URL,
+    CHAT_URL
+
+  
+  } from '../../constants/urls'
 
 export function Home() {
     const navigate = useNavigate();
@@ -14,19 +20,6 @@ export function Home() {
             <div >
                 <header className='header home'>
                     <div className='header-container header-content'>
-                        <div className='bar'>
-                            <a className='link' href="/">
-                                <img src={logo} alt="logo mentalIfy" />
-                            </a>
-                            <nav className='nav'>
-                                <a href="#"> Especialistas </a>
-                            
-                                <button className='login-button'onClick={() => navigate("/login")}>Login</button>
-                                
-                            </nav>
-                        </div>
-
-
 
                         <h1 className='title'>Sé una mejor versión de tí con la terapia en línea</h1>
 
@@ -34,7 +27,7 @@ export function Home() {
 
                     </div>
                     <div className='register'>
-                        <button className='register-button' onClick={()=>navigate("/register")} >Registrate</button>
+                        <button className='register-button' onClick={()=>navigate(REGISTER_URL)} >Registrate</button>
                     </div>
                 </header>
 
@@ -53,7 +46,7 @@ export function Home() {
                     <p>En Mentalify podrás encontrar una gran variedad de psicólogos y
                         psiquiatras con los que podrás agendar un encuentro </p>
 
-                    <div className='profile-button'><button className='perfiles'>Perfiles</button></div>
+                    <div className='profile-button'><button className='perfiles' onClick={()=>navigate(CHAT_URL)}>Perfiles</button></div>
                 </section>
 
                 

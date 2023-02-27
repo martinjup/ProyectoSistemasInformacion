@@ -7,11 +7,23 @@ import privacyLogo from '../../img/Privacy-policy-logo.png'
 import oEye from '../../img/openEye.png'
 import cEye from '../../img/closedEye.png'
 import { useNavigate } from "react-router-dom";
-
+import { registerWithEmail, signInWithGoogle } from '../../firebase/auth-service'
+import { useForm } from 'react-hook-form'
 
 
 export function Register(props) {
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleSigInWtihGoogle = async () => {
+    await signInWithGoogle();
+  }
+
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  
+  const onSubmit = async (data) =>{
+    await registerWithEmail(data)
+  }
+
   const navigate = useNavigate();
   const toggleShowPassword = (event) => {
     event.preventDefault();
@@ -26,68 +38,77 @@ export function Register(props) {
         <p>¿Ya tienes una cuenta? Inicia Sesión</p>
       </div>
       <div className='headboard'>
-      <img src={googleLogo} alt='Logo Google' className='miniLogos'/>
-      <img src={facebookLogo} alt='Logo Facebook' className='miniLogos'/>
+        <img src={googleLogo} alt='Logo Google' className='miniLogos' onClick={handleSigInWtihGoogle} />
+        <img src={facebookLogo} alt='Logo Facebook' className='miniLogos' />
       </div>
-      <div className='personalData'>
-        <div className='leftContainer'>
-          <div className='textLeftContainer'>
-        <input type="text" className='leftText' placeholder="Nombre" />
-        <input type="text" className='leftText' placeholder="Apellido" />
-          </div>
-        <br />
-        <input type="email" className='leftText2' id='email' placeholder="Correo electronico" />
-        <div className='passwordContainer'>
-        <div className='password'>
-          <input type={showPassword ? "text" : "password"}
-          id={props.id}
-          name={props.name}
-          value={props.value}
-          onChange={props.onChange}
-          placeholder='Contraseña'
-          />
-          <button onClick={toggleShowPassword}>
-          {showPassword ? 'Hide' : "Show"}
-          </button>
-          </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='personalData'>
+          <div className='leftContainer'>
+            <div className='textLeftContainer'>
+              <input type="text" className='leftText' placeholder="Nombre" name='nombre' {...register('nombre', { required: true, maxLength: 20, pattern: /^[A-Za-z]+$/i  })} />
+              {errors.nombre?.type === 'required' && <p>El campo es requerido</p>}
+              <input type="text" className='leftText' placeholder="Apellido" name='apellido'   {...register("apellido", { required: true, maxLength: 20, pattern: /^[A-Za-z]+$/i  }) } />
+            </div>
+            <br />
+            <input type="email" className='leftText2' id='email' name='email' placeholder="Correo electronico"  {...register("email", { required: true, pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i  })} />
+            <div className='passwordContainer'>
+              <div className='password'>
+                <input type={showPassword ? "text" : "password"}
+                  id={props.id}
+                  name={props.name}
+                  value={props.value}
+                  onChange={props.onChange}
+                  placeholder='Contraseña'
+                  {...register("password")}
+                />
+                <button onClick={toggleShowPassword}>
+                  {showPassword ? 'Hide' : "Show"}
+                </button>
+              </div>
 
-          <div className='password'>
-          <input type={showPassword ? "text" : "password"}
-          id={props.id}
-          name={props.name}
-          value={props.value}
-          onChange={props.onChange}
-          placeholder='Confirmar contraseña'
-          />
-          <button onClick={toggleShowPassword}>
-          {showPassword ? "Hide" : "Show"}
-          </button>
+              <div className='password'>
+                <input type={showPassword ? "text" : "password"}
+                  id={props.id}
+                  name={props.name}
+                  value={props.value}
+                  onChange={props.onChange}
+                  placeholder='Confirmar contraseña'
+                />
+                <button onClick={toggleShowPassword}>
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+            </div>
+            <br />
+            <input type='tel' placeholder='Numero telefónico' name='phone' className='phone' {...register("phone")}></input>
           </div>
+          <div className='rightContainer'>
+            <img id='privacyLogo' src={privacyLogo} alt='Privacy Policy logo' />
           </div>
-          <br />
-        <input type='tel' placeholder='Numero telefónico' className='phone'></input>
         </div>
-        <div className='rightContainer'>
-          <img id='privacyLogo' src={privacyLogo} alt='Privacy Policy logo'/>
-        </div>
-      </div>
 
-      <div className='separator'>.</div>
+        <div className='separator'>.</div>
 
         <div className='calendar'>
-          <input className='calendarBox' type="number" placeholder='DD'/>
+          <input className='calendarBox' type="number" placeholder='DD' name='day' {...register("day")}/>
           <h1 className='calendarSplit'>/</h1>
-          <input className='calendarBox' type="number" placeholder='MM'/>
+          <input className='calendarBox' type="number" placeholder='MM' name='month' {...register("month")} />
           <h1 className='calendarSplit'>/</h1>
-          <input className='calendarBox' type="number" placeholder='AAAA'/>
+          <input className='calendarBox' type="number" placeholder='AAAA' name='year' {...register("year")}/>
           <p className='calendarText'>Introduzca su fecha de nacimiento.</p>
         </div>
         <div className='gender'>
-        <select className='genderValue'><option>Género</option><option>Masculino</option><option>Femenino</option></select>
+          <select className='genderValue' {...register("gender")}>
+            <option disabled selected>--- Género ---</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+
         </div>
         <br />
-        <button className='createAccount' type="submit">Crear cuenta</button>
-        <button className='createAccount' onClick={()=>navigate("/registerdoctor")}>Crer cuenta como especialista</button>
+        <input className='createAccount' type="submit" value="Crear cuenta"/>
+      </form>
+      <button className='createAccount' onClick={() => navigate("/registerdoctor")}>Crer cuenta como especialista</button>
     </div>
   );
 }

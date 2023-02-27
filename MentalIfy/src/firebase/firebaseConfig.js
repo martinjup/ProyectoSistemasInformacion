@@ -1,9 +1,9 @@
 //Configuración para la conexión con Firebase y Firestore
 
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-//import { getStorage } from "firebase/storage";
-//import { getFirestore } from "@firebase/firestore";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDJAj5SN9_9seeWZ0c4hUif8RshmZSAzGc",
@@ -18,5 +18,7 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-//export const db = getFirestore(app);
-//export const storage = getStorage(app);
+export const db = getFirestore(app);
+export const storage = getStorage(app);
+export const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({prompt: 'select_account'})
