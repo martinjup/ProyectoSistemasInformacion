@@ -7,6 +7,13 @@
     text-align: center;
     font-family: 'Montserrat', sans-serif;
 }
+.square {
+    height: 50%;   
+    background-color: #fdfdfd;
+    margin: auto;
+    width: 50%;
+    border: 3px solid #6945ff;
+}
 #top{
     background-color: #6945ff;
     color: #6945ff;
@@ -24,8 +31,14 @@
     margin: auto;
 }
 .boton {
-    width: 15%;
-    justify-content: center;
-    text-align: center;
-    margin: auto;
+    background-color: #6945ff;
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
 }
+.boton {border-radius: 12px;}

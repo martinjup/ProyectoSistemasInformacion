@@ -25,25 +25,28 @@ export const Login = () => {
   return (
     <><div>
       <div id='top'>.</div>
-      <div className='headboard'>
+      <br></br>
+      <body className="square">
+      <div className="headboard">
         <h3>Login</h3>
       </div>
-      <div className = 'frame'>
+      <div className="headboard">
       <form id="form" onSubmit={handleSubmit}>
-        <div className='container'>
+          <div>
           <input name="email" placeholder="correo" type="email" />
-        </div>
-        <div className='container'>
-          <input name="password" placeholder="contrase" type="password" />
-        </div >
-        <div className='container'>
+          </div>
+          <div>
+          <input name="password" placeholder="contraseña" type="password" />
+          <div>
+          </div>
           <button type="submit" className='boton'>Login</button>
-        </div>
+          </div>
       </form>
       </div>
-      <div className='container'>
+      <div className="headboard">
       <button className='boton'> Google </button>
       </div>
+      </body>
       </div>
     </>
     
