@@ -20,7 +20,8 @@ const Messages = () => {
 
 
   return (
-    <div className='messages'>
+    
+    <div className='messages h-[calc(100%-160px)]'>
         {messages.map(m=>(
           <Message message={m} key={m.id}/>
         ))}
