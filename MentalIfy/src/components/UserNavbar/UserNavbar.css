@@ -1,0 +1,58 @@
+*{font-family: 'Montserrat', sans-serif;
+}   
+
+.NavbarBox{
+    list-style: none;
+    padding: 0;
+    background: #6945ff;
+    width: 100%;
+    min-width: 492px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.NavbarBox li a{
+    text-decoration: none;
+    color: #22223b;
+    padding: 20px;
+    display: block; 
+}
+
+.NavbarBox li{
+    display: inline-block;
+    text-align: center;
+}
+
+.NavbarBox li a:hover{
+    background: #6ca8e3;
+    border-radius: 10px;
+}
+
+#accountLogo{
+    width: 27px;
+}
+
+#mostrar{
+    display: block;
+    position: absolute;
+    background-color: #df5bff;
+    border-radius: 10px;
+    height: 90%;
+    
+}
+
+#ocultar{
+    display: none;
+}
+
+#leftNav{
+    display: inline-block;
+    text-align: left;
+    width: 50%;
+}
+
+#rightNav{
+    display: inline-block;
+    text-align: right;
+    width: 50%;
+}
