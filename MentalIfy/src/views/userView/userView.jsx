@@ -10,16 +10,23 @@ import Contacts from '../../img/Contacts-logo.png'
 import Calendar from '../../img/Calendar-img.png'
 import Message from '../../img/Message-img.png'
 import Register from '../../img/Registro-img.png'
+import { useUser } from '../../contexts/UserContext'
 
+import {
+    CHAT_URL
+} from '../../constants/urls'
 
-export function UserView(){
+export function UserView() {
+
+    const { user } = useUser()
+
     return (
         <div>
             <UserNavbar />
             <SMSContainer />
-            <h1>Bienvenido user.name</h1>
+            <h1>Bienvenido {user.name}</h1>
             <div className='container'>
-                
+
                 <div className='internalDiv'>
                     <img src={Register} className='centralImg'></img>
                     <Link className='linkText'>Mis consultas</Link>
@@ -29,8 +36,8 @@ export function UserView(){
                     <Link className='linkText'>Ver especialistas</Link>
                 </div>
                 <div className='internalDiv'>
-                    <img src={Message} className='centralImg'></img>
-                    <Link className='linkText'>Mis chats</Link>
+                    <Link className='linkText' to={CHAT_URL}><img src={Message} className='centralImg'></img>
+                        Mis chats</Link>
                 </div>
                 <div className='internalDiv'>
                     <img src={Calendar} className='centralImg'></img>

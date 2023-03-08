@@ -3,7 +3,7 @@ import React from 'react'
 import {
     HOME_URL,
     LOGIN_URL,
-    REGISTER_URL,
+    USER_VIEW_URL,
 
 } from '../../constants/urls'
 import logo from '../../img/logo.png'
@@ -12,6 +12,7 @@ import styles from "./Navbar.module.css";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext"
 import { logout } from '../../firebase/auth-service';
+
 
 export function Navbar() {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ export function Navbar() {
                     </Link>
                     {!!user && (
                         <>
-                        <Link to="/profile" className={styles.links}>
+                        <Link to={USER_VIEW_URL} className={styles.links}>
                             <span> {user.name}</span>
                         </Link>
 
