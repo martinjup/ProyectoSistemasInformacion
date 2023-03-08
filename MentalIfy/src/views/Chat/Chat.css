@@ -78,9 +78,9 @@
     padding: 10px;
     height: 648.4px;
     overflow: scroll;
-    /* height: -moz-calc(100% - (160px));
+    /* height: -moz- calc(100% - 160px);  */
     /* height: -webkit-calc(100% - (160px)); */
-    /* height: calc(100vh - (160px));  */
+    /* height: calc(100vh - 350);  */
 }
 
 .chatInfo {

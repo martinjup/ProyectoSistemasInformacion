@@ -4,9 +4,10 @@ import {useUser } from "./UserContext";
 export const ChatContext = createContext()
 
 
-
+// const { user } = useUser()
 export const  ChatContextProvider = ({ children }) => {
-    const { user } = useUser()
+    
+const { user } = useUser()
     const INITIAL_STATE = {
         chatId: "null",
         user: {}
