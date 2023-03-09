@@ -5,18 +5,19 @@ import {Home} from './views/home/home'
 import {Register} from './views/register/register'
 import {RegisterDoctor} from './views/register/registerdoctor'
 import {Login} from './views/login/login'
-// import {Nav} from './components/Navbar/Navbar'
 import './index.css'
 import { Chat } from './views/Chat/Chat'
 import { Layout } from './views/Layout/Layout'
 import {UserView} from './views/userView/userView'
+import {Specialist} from './views/specialists/specialist'
 import {
   HOME_URL,
   LOGIN_URL,
   REGISTER_URL,
   REGISTER_DOCTOR_URL,
   CHAT_URL,
-  USER_VIEW_URL
+  USER_VIEW_URL,
+  SPECIALIST_URL
 
 
 } from './constants/urls'
@@ -37,6 +38,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           
           <Route path={CHAT_URL} element={<Chat />} />
           <Route path={USER_VIEW_URL} element={<UserView />} />
+          <Route path={SPECIALIST_URL} element={<Specialist />} />
           
         </Route>
 

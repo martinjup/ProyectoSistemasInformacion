@@ -13,12 +13,9 @@ function Chats() {
   useEffect(() => {
 
     const getChats = () => {
-      // console.log(user.id)
       const unsub = onSnapshot(doc(db, 'usersChats', user.id), (doc) => {
         setChats(doc.data())
-        console.log(doc.data())
       })
-        console.log(chats)
       return () => {
         unsub
       }
@@ -29,7 +26,6 @@ function Chats() {
 
   const handleSelect = async (u) => {
     dispatch({ type: "CHANGE_USER", payload: u })
-    console.log(u.name)
   }
   return (
     <div className='chats'>

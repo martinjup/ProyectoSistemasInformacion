@@ -21,7 +21,6 @@ export function Navbar() {
         await logout()
     }
 
-    console.log(user)
     return (
         <div className={styles.container}>
 

@@ -4,3 +4,4 @@ export const REGISTER_URL = "/register";
 export const REGISTER_DOCTOR_URL = "/registerdoctor";
 export const    CHAT_URL = '/chat';
 export const USER_VIEW_URL = "/userview";
+export const SPECIALIST_URL = "/specialists";

@@ -3,7 +3,7 @@ import { db } from "../firebase/firebaseConfig"
 
 
 export class Doctor {
-    constructor({ name, email, role, gender, birthdate, phone, resume, specialist, university, CIP }) {
+    constructor({ name, email, role, gender, birthdate, phone, resume, specialist, university, CIP, id }) {
         this.name = name
         this.email = email
         this.role = role
@@ -14,6 +14,7 @@ export class Doctor {
         this.specialist = specialist
         this.university = university
         this.CIP = CIP
+        this.id = id
 
     }
 
@@ -30,10 +31,9 @@ export class Doctor {
             resume: this.resume,
             specialist: this.specialist,
             university: this.university,
-            CIP: this.CIP
+            CIP: this.CIP,
+            id : uid
         }
-
-        // console.log(u)
 
         setDoc(doc(db, 'users', uid), u)
 
