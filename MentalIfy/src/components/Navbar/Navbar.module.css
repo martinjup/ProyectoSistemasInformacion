@@ -1,15 +1,21 @@
 .bar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    padding: 1.5rem 2rem 2rem 2rem;
-    background-color: #d9d9d9;
-    /* padding-left: 2rem; */
+    background-color: #ffff;
 
 }
 
+.nav {
+    display: flex;
+    flex-direction: row;
+    margin-right: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
 .loguito{
-    height: 150px;
+    height: 75px;
 }
 
 .link {
@@ -46,26 +52,13 @@
 }
 
 .links{
+    margin: 20px;
     text-decoration: none;
     color: black;
+    font-size: large;
+    font-weight: bold;
 }
 
 .container{
     background-color: gray;
-}
-
-
-@media (min-width: 768px) {
-    .bar {
-        flex-direction: row;
-        height: 175px;
-    }
-
-    .nav {
-        display: flex;
-        flex-direction: row;
-        margin-right: 2rem;
-        align-items: center;
-        justify-content: center;
-    }
 }

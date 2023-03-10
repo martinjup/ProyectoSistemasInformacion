@@ -4,6 +4,7 @@ import {
     HOME_URL,
     LOGIN_URL,
     USER_VIEW_URL,
+    SPECIALIST_URL
 
 } from '../../constants/urls'
 import logo from '../../img/logo.png'
@@ -22,7 +23,7 @@ export function Navbar() {
     }
 
     return (
-        <div className={styles.container}>
+        <div>
 
             <div className={styles.bar}>
                 <Link to={HOME_URL} className={styles.link}>
@@ -31,9 +32,7 @@ export function Navbar() {
                 <nav className={styles.nav}>
 
 
-                    <Link className={styles.links}>
-                        <h1>Especialistas</h1>
-                    </Link>
+                    <Link to={SPECIALIST_URL} className={styles.links}>Especialistas</Link>
                     {!!user && (
                         <>
                         <Link to={USER_VIEW_URL} className={styles.links}>
