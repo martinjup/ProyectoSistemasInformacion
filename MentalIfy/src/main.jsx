@@ -5,6 +5,7 @@ import {Home} from './views/home/home'
 import {Register} from './views/register/register'
 import {RegisterDoctor} from './views/register/registerdoctor'
 import {Login} from './views/login/login'
+import { AccountSettings } from './views/AccountSettings/accountSettings'
 import './index.css'
 import { Chat } from './views/Chat/Chat'
 import { Layout } from './views/Layout/Layout'
@@ -17,6 +18,7 @@ import {
   REGISTER_DOCTOR_URL,
   CHAT_URL,
   USER_VIEW_URL,
+  ACCOUNT_SETTINGS
   SPECIALIST_URL
 
 
@@ -35,10 +37,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path={LOGIN_URL} element={<Login />} />
           <Route path={REGISTER_URL} element={<Register />} />
           <Route path={REGISTER_DOCTOR_URL} element={<RegisterDoctor />} />
-          
           <Route path={CHAT_URL} element={<Chat />} />
           <Route path={USER_VIEW_URL} element={<UserView />} />
           <Route path={SPECIALIST_URL} element={<Specialist />} />
+          <Route path={ACCOUNT_SETTINGS} element={<AccountSettings />} />
           
         </Route>
 
