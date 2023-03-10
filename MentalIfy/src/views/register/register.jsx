@@ -53,6 +53,7 @@ export function Register(props) {
             <input type="email" className='leftText2' id='email' name='email' placeholder="Correo electronico"  {...register("email", { required: true, pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i  })} />
             <div className='passwordContainer'>
               <div className='password'>
+                
                 <input type={showPassword ? "text" : "password"}
                   id={props.id}
                   name={props.name}

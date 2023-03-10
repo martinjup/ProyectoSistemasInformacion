@@ -3,7 +3,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import './UserNavbar.css'
 import {
-    HOME_URL
+    HOME_URL,
+    LOGIN_URL,
+    USER_VIEW_URL,
+    ACCOUNT_SETTINGS
+
 } from '../../constants/urls'
 import { useNavigate } from "react-router-dom";
 
@@ -30,7 +34,7 @@ export function UserNavbar(){
                                 <Link>Fechas</Link>
                                 <Link>Precios</Link>
                                 <Link>Reservar cita</Link>
-                                <Link>Ajustes</Link>
+                                <Link to={ACCOUNT_SETTINGS}>Ajustes</Link>
                             </div>
                         </li>
                     </div>
