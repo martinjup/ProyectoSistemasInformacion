@@ -15,7 +15,7 @@ import { useUser } from '../../contexts/UserContext'
 import {
     CHAT_URL
 } from '../../constants/urls'
-
+//Vista del Usuario
 export function UserView() {
 
     const { user } = useUser()

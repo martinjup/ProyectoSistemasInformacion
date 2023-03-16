@@ -2,6 +2,7 @@ import { User } from '../models/userModel'
 import {collection, doc, setDoc, addDoc} from "firebase/firestore"
 import {db} from "../firebase/firebaseConfig"
 
+// Controller de usuario
 export function createUser(data, uid) {
     const user = new User({
         name: data.nombre + " " + data.apellido,

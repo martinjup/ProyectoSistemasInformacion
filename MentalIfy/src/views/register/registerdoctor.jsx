@@ -9,6 +9,8 @@ import cEye from '../../img/closedEye.png'
 import { registerWithEmail, signInWithGoogle } from '../../firebase/auth-service'
 import { useForm } from 'react-hook-form'
 
+//Registro para doctor
+
 export function RegisterDoctor(props) {
   const [showPassword, setShowPassword] = useState(false);
 

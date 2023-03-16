@@ -5,6 +5,7 @@ import {Home} from './views/home/home'
 import {Register} from './views/register/register'
 import {RegisterDoctor} from './views/register/registerdoctor'
 import {Login} from './views/login/login'
+import {Reserve} from './views/reserve/reserve'
 import { AccountSettings } from './views/AccountSettings/accountSettings'
 import './index.css'
 import { Chat } from './views/Chat/Chat'
@@ -19,22 +20,21 @@ import {
   CHAT_URL,
   USER_VIEW_URL,
   ACCOUNT_SETTINGS,
-  SPECIALIST_URL
-
-
+  SPECIALIST_URL,
+  RESERVE_URL
 } from './constants/urls'
 
 
 
-
+// Rutas del proyecto
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-    
     <Routes>
         <Route element={<Layout />}>
           <Route path={HOME_URL} element={<Home />} />
           <Route path={LOGIN_URL} element={<Login />} />
+          <Route path={RESERVE_URL} element={<Reserve />} />
           <Route path={REGISTER_URL} element={<Register />} />
           <Route path={REGISTER_DOCTOR_URL} element={<RegisterDoctor />} />
           <Route path={CHAT_URL} element={<Chat />} />

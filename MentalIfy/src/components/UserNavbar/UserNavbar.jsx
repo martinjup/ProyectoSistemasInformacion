@@ -6,7 +6,8 @@ import {
     HOME_URL,
     LOGIN_URL,
     USER_VIEW_URL,
-    ACCOUNT_SETTINGS
+    ACCOUNT_SETTINGS,
+    RESERVE_URL
 
 } from '../../constants/urls'
 import { useNavigate } from "react-router-dom";
@@ -33,7 +34,7 @@ export function UserNavbar(){
                                 <Link>Especialistas</Link>
                                 <Link>Fechas</Link>
                                 <Link>Precios</Link>
-                                <Link>Reservar cita</Link>
+                                <Link to={RESERVE_URL}>Reservar cita</Link>
                                 <Link to={ACCOUNT_SETTINGS}>Ajustes</Link>
                             </div>
                         </li>

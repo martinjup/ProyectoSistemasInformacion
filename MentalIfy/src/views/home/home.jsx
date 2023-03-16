@@ -13,6 +13,7 @@ import {
   
   } from '../../constants/urls'
 
+// Pagina principal  
 export function Home() {
     const navigate = useNavigate();
     return (
