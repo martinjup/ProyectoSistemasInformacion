@@ -1,7 +1,7 @@
 import { doc, setDoc } from "firebase/firestore"
 import { db } from "../firebase/firebaseConfig"
 
-
+//Modelo Doctor
 export class Doctor {
     constructor({ name, email, role, gender, birthdate, phone, resume, specialist, university, CIP, id }) {
         this.name = name

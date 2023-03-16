@@ -5,7 +5,7 @@ import { useUser } from '../../contexts/UserContext'
 import { SpecialistCard } from '../../components/specialist/specialistCard'
 import { useDoctor } from '../../contexts/DoctorsContext';
 
-
+//Pagina de especialistas
 export function Specialist() {
 
     const { user } = useUser()

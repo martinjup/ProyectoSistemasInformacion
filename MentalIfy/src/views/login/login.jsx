@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useCallback } from 'react'
 import './login.css'
 
-
+//Pagina de Login
 export const Login = () => {
   const navigate = useNavigate()
   const handleSubmit = useCallback(async e => {
@@ -21,6 +21,18 @@ export const Login = () => {
       alert('Error en autenticacion, intente de nuevo')
     }
   }, [])
+  const provider = new GoogleAuthProvider()
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      
+    .then(() => {
+      navigate('/')
+        alert('Login exitoso')
+    })
+    
+    .catch(error)
+     alert('Error en autenticacion, intente de nuevo')
+    };
 
   return (
     <><div>
@@ -44,7 +56,7 @@ export const Login = () => {
       </form>
       </div>
       <div className="headboard">
-      <button className='boton'> Google </button>
+      <button className='boton' onClick={signInWithGoogle}> Google </button>
       </div>
       </body>
       </div>

@@ -6,6 +6,7 @@ import profileIcon from '../../img/Profile-icon.png';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react'
 
+//Pagina de ajustes
 export function AccountSettings() {
 
     const [showPassword, setShowPassword] = useState(false);

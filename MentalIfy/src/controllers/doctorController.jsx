@@ -2,6 +2,7 @@ import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from 'fire
 import { db } from '../firebase/firebaseConfig'
 import { Doctor } from '../models/doctorModel'
 
+// Controller de doctor
 export function createDoctor(data, uid) {
 
     const doctor = new Doctor({

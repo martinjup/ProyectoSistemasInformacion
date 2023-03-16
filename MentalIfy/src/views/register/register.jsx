@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { registerWithEmail, signInWithGoogle } from '../../firebase/auth-service'
 import { useForm } from 'react-hook-form'
 
-
+// Pagina de registro
 export function Register(props) {
   const [showPassword, setShowPassword] = useState(false);
 

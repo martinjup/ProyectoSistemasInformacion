@@ -6,3 +6,4 @@ export const CHAT_URL = '/chat';
 export const USER_VIEW_URL = "/userview";
 export const ACCOUNT_SETTINGS = '/accountsettings';
 export const SPECIALIST_URL = "/specialists";
+export const RESERVE_URL = "/reserve";
