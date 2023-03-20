@@ -4,11 +4,12 @@ import { signInWithEmailAndPassword, signInWithPopup, signOut, createUserWithEma
 import { auth, googleProvider } from "./firebaseConfig"
 import { createUser } from "../controllers/userController"
 import { createDoctor } from "../controllers/doctorController"
-
+import { rediredt } from "../helper/redirect"
 export const signInWithGoogle = async () => {
     try {
         const result = await signInWithPopup(auth, googleProvider)
-        console.log(result.user)
+        // console.log(result.user)
+
     } catch (error) {
         console.error(error)
     }

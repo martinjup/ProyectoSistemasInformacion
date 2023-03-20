@@ -5,7 +5,7 @@ import { SMSContainer } from '../../components/SMSContainer/SMSContainer';
 import profileIcon from '../../img/Profile-icon.png';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react'
-
+import { useForm } from 'react-hook-form'
 //Pagina de ajustes
 export function AccountSettings() {
 
@@ -16,9 +16,16 @@ export function AccountSettings() {
     const toggleShowPassword = (event) => {
         event.preventDefault();
         setShowPassword(!showPassword);
-      }
+    }
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-    return(
+    const onSubmit = async (data) => {
+        // console.log(data)
+        await registerWithEmail(data)
+    }
+
+
+    return (
 
         <div>
             <UserNavbar />
@@ -37,13 +44,13 @@ export function AccountSettings() {
                     </div>
                     <div className='smallBox'>
                         <h4 className='smallLabel'>Sexo</h4>
-                        <input placeholder={user.id} className={showPassword ? "smallImput" : "hide"}></input>
-                        <label className={showPassword ? "hide" : "smallImput"}>{user.id}</label>
+                        <input placeholder={user.gender && " "} className={showPassword ? "smallImput" : "hide"}></input>
+                        <label className={showPassword ? "hide" : "smallImput"}>{user.gender && " "}</label>
                     </div>
                     <div className='smallBox'>
                         <h4 className='smallLabel'>Fecha de Nacimiento</h4>
-                        <input placeholder={user.name} className={showPassword ? "smallImput" : "hide"}></input>
-                        <label className={showPassword ? "hide" : "smallImput"}>{user.name}</label>
+                        <input className={showPassword ? "hide" : "calendarBox"} type="number" placeholder='AAAA'  {...register("year")}/>
+                        <label className={showPassword ? "hide" : "smallImput"}>{user.birthdate && " "}</label>
                     </div>
                     <h4 className='smallBox'>Información de contacto</h4>
                     <div className='smallBox'>
@@ -53,21 +60,21 @@ export function AccountSettings() {
                     </div>
                     <div className='smallBox'>
                         <h4 className='smallLabel'>Teléfono</h4>
-                        <input placeholder={user.name} className={showPassword ? "smallImput" : "hide"}></input>
-                        <label className={showPassword ? "hide" : "smallImput"}>{user.name}</label>
+                        <input placeholder={user.phone && " "} className={showPassword ? "smallImput" : "hide"}></input>
+                        <label className={showPassword ? "hide" : "smallImput"}>{user.phone && " "}</label>
                     </div>
 
                 </div>
                 <div className='rightBox'>
-                    <img src={profileIcon} id='profilePicture'/>
+                    <img src={profileIcon} id='profilePicture' />
                     <br />
                     <Link id='changePhoto'>Cambiar foto de perfil</Link>
                 </div>
             </div>
             <div id='changeDataBox'>
-            <button className={showPassword ? "changeData" : 'hide'}>Guardar datos</button>
+                <button className={showPassword ? "changeData" : 'hide'}>Guardar datos</button>
             </div>
         </div>
     )
-    
+
 }

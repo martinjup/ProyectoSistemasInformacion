@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
-import { auth } from "../../../src/firebase/firebaseConfig";
-import { useNavigate } from "react-router-dom";
+import {signInWithGoogle } from '../../firebase/auth-service'
+import { auth, db } from "../../../src/firebase/firebaseConfig";
+import { redirect, useNavigate } from "react-router-dom";
 import { useCallback } from 'react'
 import './login.css'
-
+import { rediredt } from "../../helper/redirect";
+import { ACCOUNT_SETTINGS } from '../../constants/urls'
+import { useUser } from "../../contexts/UserContext";
+import { doc, getDoc } from "firebase/firestore";
 //Pagina de Login
 export const Login = () => {
   const navigate = useNavigate()
+
   const handleSubmit = useCallback(async e => {
     e.preventDefault()
 
@@ -22,17 +27,17 @@ export const Login = () => {
     }
   }, [])
   const provider = new GoogleAuthProvider()
-  const signInWithGoogle = () => {
-    signInWithPopup(auth, provider)
+
+
+    const handleSigInWtihGoogle = async () => {
+      await signInWithGoogle()
+        .then(()=>{
+          navigate(ACCOUNT_SETTINGS)
+        }
+        )
       
-    .then(() => {
-      navigate('/')
-        alert('Login exitoso')
-    })
-    
-    .catch(error)
-     alert('Error en autenticacion, intente de nuevo')
-    };
+
+    }
 
   return (
     <><div>
@@ -56,7 +61,7 @@ export const Login = () => {
       </form>
       </div>
       <div className="headboard">
-      <button className='boton' onClick={signInWithGoogle}> Google </button>
+      <button className='boton' onClick={handleSigInWtihGoogle}> Google </button>
       </div>
       </body>
       </div>
