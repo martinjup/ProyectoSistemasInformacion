@@ -17,7 +17,7 @@ import { logout } from '../../firebase/auth-service';
 
 export function Navbar() {
     const navigate = useNavigate();
-    const { user } = useUser()
+    const { user, isLoandingUser } = useUser()
     const handleLogout = async () => {
         await logout()
     }
@@ -25,7 +25,7 @@ export function Navbar() {
     return (
         <div>
 
-            <div className={styles.bar}>
+            { !isLoandingUser && (<div className={styles.bar}>
                 <Link to={HOME_URL} className={styles.link}>
                     <img src={logo} alt="logo mentalIfy" className={styles.loguito} />
                 </Link>
@@ -45,7 +45,7 @@ export function Navbar() {
                     {!user && <button className={styles.loginButton} onClick={() => navigate(LOGIN_URL)}>Login</button>}
                 </nav>
             </div>
-
+)}
         </div>
     )
 

@@ -11,6 +11,7 @@ export function DoctorContextProvider({ children }) {
         async function fetchDoctors(){
             const doctors = await getDoctor()
             setDoctor(doctors)
+            // console.log(doctor)
         }
         fetchDoctors()
 

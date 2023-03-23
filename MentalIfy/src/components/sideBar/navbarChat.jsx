@@ -3,7 +3,7 @@ import { useUser } from '../../contexts/UserContext'
 
 function NavbarChat() {
 
-  const {user} = useUser();
+  const {user, isLoandingUser} = useUser();
   // console.log(user.name)
 
   return (
@@ -11,7 +11,7 @@ function NavbarChat() {
       <span className='logo'>MentalChat</span>
       <div className='user'>
           <img src="" alt="" />
-          <span> {user.name}</span>
+         { !isLoandingUser &&<span> {user.name}</span>}
       </div>
     </div>
   )

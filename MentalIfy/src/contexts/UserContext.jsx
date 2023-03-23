@@ -3,48 +3,39 @@ import { onAuthStateChanged } from "firebase/auth";
 import React, { useContext, createContext, useEffect, useState } from "react";
 import { getUser } from "../controllers/userController";
 import { auth } from "../firebase/firebaseConfig";
+import { getUserProfile } from "../helper";
 
 export const UserContext = createContext(null)
 
 export function UserContentProvider({ children }) {
     const [user, setUser] = useState(null)
-    useEffect(()=>{
-        onAuthStateChanged(auth,(firebaseUser)=>{
+    const [isLoandingUser, setIsLoadingUser] = useState(true)
 
-            if(firebaseUser){
-                // console.log(firebaseUser)
-                if(firebaseUser.displayName != null){
-                    setUser({
-                        id: firebaseUser.uid,
-                        email: firebaseUser.email,
-                        name: firebaseUser.displayName
-                    })
-                }else{
-                    fetchUser()
-                    
-                }
-            }else{
-                setUser(null)
+    useEffect(() => {
+        onAuthStateChanged(auth, async (firebaseUser) => {
+            setIsLoadingUser(true);
+            if (firebaseUser && !user) {
+                const userProfile = await getUserProfile(firebaseUser.email);
+
+                setUser(userProfile);
+            } else {
+                setUser(null);
             }
 
-            async function fetchUser(){
-                const u = await getUser(firebaseUser.uid)
-                setUser({
-                    id: firebaseUser.uid,
-                    email: firebaseUser.email,
-                    name: u.name
-                })
-            }
+            setIsLoadingUser(false);
         });
-    }, [])
+    }, []);
 
 
     return (
-        <UserContext.Provider 
-        value={{
-            user,
-        }}>
-    { children }
+        <UserContext.Provider
+            value={{
+                user,
+                setUser,
+                isLoandingUser,
+                setIsLoadingUser,
+            }}>
+            {children}
         </UserContext.Provider >
     )
 }

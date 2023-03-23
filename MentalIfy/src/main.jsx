@@ -23,12 +23,13 @@ import {
   SPECIALIST_URL,
   RESERVE_URL
 } from './constants/urls'
+import { Profile } from './views/profile/Profile'
 
 
 
 // Rutas del proyecto
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
     <Routes>
         <Route element={<Layout />}>
@@ -41,6 +42,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path={USER_VIEW_URL} element={<UserView />} />
           <Route path={SPECIALIST_URL} element={<Specialist />} />
           <Route path={ACCOUNT_SETTINGS} element={<AccountSettings />} />
+          <Route path='/profile/:usrID' element={<Profile/>}/>
           
         </Route>
 
@@ -48,6 +50,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
       </Routes>
 
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
+  {/* </React.StrictMode> */}
+  
 )

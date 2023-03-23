@@ -6,9 +6,10 @@ import { DoctorContextProvider } from "../../contexts/DoctorsContext";
 
 export function Layout() {
   return (
-    <main>
+    <UserContentProvider>
+      <main>
 
-      <UserContentProvider>
+
         <ChatContextProvider>
           <DoctorContextProvider>
             <Navbar />
@@ -18,8 +19,9 @@ export function Layout() {
             </section>
           </DoctorContextProvider>
         </ChatContextProvider>
-      </UserContentProvider>
 
-    </main>
+
+      </main>
+    </UserContentProvider>
   );
 }

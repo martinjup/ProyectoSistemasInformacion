@@ -18,13 +18,15 @@ import {
 //Vista del Usuario
 export function UserView() {
 
-    const { user } = useUser()
+    const { user, isLoandingUser } = useUser()
+    console.log(user)
+    console.log(isLoandingUser)
 
     return (
         <div>
             <UserNavbar />
-            <SMSContainer />
-            <h1>Bienvenido {user.name}</h1>
+            {/* <SMSContainer /> */}
+           {!isLoandingUser && <h1>Bienvenido {user.name}</h1>}
             <div className='container'>
 
                 <div className='internalDiv'>
