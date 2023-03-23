@@ -6,6 +6,8 @@ import profileIcon from '../../img/Profile-icon.png';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { createUser } from '../../controllers/userController';
+import { User } from '../../models/userModel';
 //Pagina de ajustes
 export function AccountSettings() {
 
@@ -20,8 +22,23 @@ export function AccountSettings() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
-        // console.log(data)
-        await registerWithEmail(data)
+
+        try {
+            const userN = {
+                name: user.name,
+                email: user.email,
+                phone: data.phone,
+                role: "paciente",
+                gender: data.gender,
+                year: data.year,
+            }
+            console.log(userN)
+            createUser(userN, user.id)
+        } catch (error) {
+            console.log(error)
+        }
+
+
     }
 
 
@@ -33,47 +50,54 @@ export function AccountSettings() {
             <h1 id='header'>Ajustes de cuenta</h1>
             <div id='bigBox'>
                 <div className='leftBox'>
-                    <div id='title'>
-                        <h4 className='smallBox'>Información básica</h4>
-                        <button className='changeData' onClick={toggleShowPassword}>Modificar datos</button>
-                    </div>
-                    <div className='smallBox'>
-                        <h4 className='smallLabel'>Nombre</h4>
-                        <input placeholder={user.name} className={showPassword ? "smallImput" : "hide"}></input>
-                        <label className={showPassword ? "hide" : "smallImput"}>{user.name}</label>
-                    </div>
-                    <div className='smallBox'>
-                        <h4 className='smallLabel'>Sexo</h4>
-                        <input placeholder={user.gender && " "} className={showPassword ? "smallImput" : "hide"}></input>
-                        <label className={showPassword ? "hide" : "smallImput"}>{user.gender && " "}</label>
-                    </div>
-                    <div className='smallBox'>
-                        <h4 className='smallLabel'>Fecha de Nacimiento</h4>
-                        <input className={showPassword ? "hide" : "calendarBox"} type="number" placeholder='AAAA'  {...register("year")}/>
-                        <label className={showPassword ? "hide" : "smallImput"}>{user.birthdate && " "}</label>
-                    </div>
-                    <h4 className='smallBox'>Información de contacto</h4>
-                    <div className='smallBox'>
-                        <h4 className='smallLabel'>Correo electrónico</h4>
-                        <input placeholder={user.email} className={showPassword ? "smallImput" : "hide"}></input>
-                        <label className={showPassword ? "hide" : "smallImput"}>{user.email}</label>
-                    </div>
-                    <div className='smallBox'>
-                        <h4 className='smallLabel'>Teléfono</h4>
-                        <input placeholder={user.phone && " "} className={showPassword ? "smallImput" : "hide"}></input>
-                        <label className={showPassword ? "hide" : "smallImput"}>{user.phone && " "}</label>
-                    </div>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div id='title'>
+                            <h4 className='smallBox'>Información básica</h4>
+                            <button className='changeData' onClick={toggleShowPassword}>Modificar datos</button>
+                        </div>
+                        {/* <div className='smallBox'>
+                            <h4 className='smallLabel'>Nombre</h4>
+                            <input placeholder={user.name} className={showPassword ? "smallImput" : "hide"}></input>
+                            <label className={showPassword ? "hide" : "smallImput"}>{user.name}</label>
+                        </div> */}
+                        <div className='smallBox'>
+                            <h4 className='smallLabel'>Sexo</h4>
+                            <select className={showPassword ? "genderValue" : "hide"} {...register("gender")}>
+                                <option disabled selected>--- Género ---</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                            </select>
+                            <label className={showPassword ? "hide" : "genderValue"}>{user.gender && ""}</label>
+                        </div>
+                        <div className='smallBox'>
+                            <h4 className='smallLabel'>Fecha de Nacimiento</h4>
+                            <input className={showPassword ? "calendarBox" : "hide"} type="number" placeholder='DD' name='day' {...register("day")} />
+                            <h1 className={showPassword ? "calendarText" : "hide"}>/</h1>
+                            <input className={showPassword ? "calendarBox" : "hide"} type="number" placeholder='MM' name='month' {...register("month")} />
+                            <h1 className={showPassword ? "calendarText" : "hide"}>/</h1>
+                            <input className={showPassword ? "calendarBox" : "hide"} type="number" placeholder='AAAA' name='year' {...register("year")} />
+                            <p className={showPassword ? "calendarText" : "hide"}>Introduzca su fecha de nacimiento.</p>
+                            <label className={showPassword ? "hide" : "calendarBox"}>{user.birthdate && " "}</label>
+                        </div>
+                        <h4 className='smallBox'>Información de contacto</h4>
+                        {/* <div className='smallBox'>
+                            <h4 className='smallLabel'>Correo electrónico</h4>
+                            <input placeholder={user.email} className={showPassword ? "smallImput" : "hide"}></input>
+                            <label className={showPassword ? "hide" : "smallImput"}>{user.email}</label>
+                        </div> */}
+                        <div className='smallBox'>
+                            <h4 className='smallLabel'>Teléfono</h4>
+                            <input type='tel' placeholder='Numero telefónico' name='phone' className={showPassword ? "phone" : "hide"} {...register("phone")}></input>
+                            <label className={showPassword ? "hide" : "smallImput"}>{user.phone && " "}</label>
+                        </div>
+                        <div id='changeDataBox'>
+                            <button type="submit" className={showPassword ? "changeData" : 'hide'}>Guardar datos</button>
+                        </div>
+                    </form>
+                </div>
 
-                </div>
-                <div className='rightBox'>
-                    <img src={profileIcon} id='profilePicture' />
-                    <br />
-                    <Link id='changePhoto'>Cambiar foto de perfil</Link>
-                </div>
             </div>
-            <div id='changeDataBox'>
-                <button className={showPassword ? "changeData" : 'hide'}>Guardar datos</button>
-            </div>
+
         </div>
     )
 

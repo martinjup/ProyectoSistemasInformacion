@@ -9,13 +9,20 @@ import cEye from '../../img/closedEye.png'
 import { useNavigate } from "react-router-dom";
 import { registerWithEmail, signInWithGoogle } from '../../firebase/auth-service'
 import { useForm } from 'react-hook-form'
+import { ACCOUNT_SETTINGS } from '../../constants/urls'
+
 
 // Pagina de registro
 export function Register(props) {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate()
 
   const handleSigInWtihGoogle = async () => {
-    await signInWithGoogle();
+    await signInWithGoogle()
+
+    .then(()=>{
+      navigate(ACCOUNT_SETTINGS)
+    })
   }
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -24,7 +31,7 @@ export function Register(props) {
     await registerWithEmail(data)
   }
 
-  const navigate = useNavigate();
+
   const toggleShowPassword = (event) => {
     event.preventDefault();
     setShowPassword(!showPassword);

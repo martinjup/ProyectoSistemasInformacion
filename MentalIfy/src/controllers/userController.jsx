@@ -4,13 +4,15 @@ import { db } from "../firebase/firebaseConfig"
 
 export function createUser(data, uid) {
     const user = new User({
-        name: data.nombre + " " + data.apellido,
+        name: data.apellido != null ? data.nombre + data.apellido: data.name,
         email: data.email,
         phone: data.phone,
         role: "paciente",
         gender: data.gender,
         birthdate: data.year,
     })
+
+    console.log(user)
 
     user.save(uid)
 

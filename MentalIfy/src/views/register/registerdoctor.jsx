@@ -8,11 +8,14 @@ import oEye from '../../img/openEye.png'
 import cEye from '../../img/closedEye.png'
 import { registerWithEmail, signInWithGoogle } from '../../firebase/auth-service'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
+import { ACCOUNT_SETTINGS } from '../../constants/urls'
 
 //Registro para doctor
 
 export function RegisterDoctor(props) {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate()
 
   const toggleShowPassword = (event) => {
     event.preventDefault();
@@ -26,8 +29,22 @@ export function RegisterDoctor(props) {
     await registerWithEmail(data)
   }
 
-  const handleSigInWtihGoogle = async () => {
-    await signInWithGoogle();
+  // const handleSigInWtihGoogle = async () => {
+  //   await signInWithGoogle()
+  //   // .then( async () =>{
+  //   const user = useUser()
+  //   console.log(user)
+  //   // })
+  // }
+
+  async function handleSigInWtihGoogle(){
+    await signInWithGoogle()
+    // const user = useUser()
+      // console.log(user)
+      
+    .then(()=>{
+      navigate(ACCOUNT_SETTINGS)
+    })
   }
 
   return (
