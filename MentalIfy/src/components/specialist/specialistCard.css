@@ -1,11 +1,22 @@
 .container{
     width: 100%;
+    display: table;
+    padding-top: 15px;
+    padding-bottom: 15px;
     
 }
 
 
 .content{
-    background-color: red;
-    height: 5rem;
+    background-color: #0bd5fd;
+    text-align: left;
+    font-size: x-large;
+    display: table-cell;
+    vertical-align: middle;
+    height: 70px;
+}
+
+.text{
+    margin-left: 40px;
 }
 

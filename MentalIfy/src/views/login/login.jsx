@@ -31,6 +31,10 @@ export const Login = () => {
 
     const handleSigInWtihGoogle = async () => {
       await signInWithGoogle()
+      .then(() => {
+        navigate('/')
+          alert('Login exitoso')
+      })
  
     }
 

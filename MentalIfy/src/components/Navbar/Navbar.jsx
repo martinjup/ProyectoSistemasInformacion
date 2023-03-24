@@ -20,6 +20,10 @@ export function Navbar() {
     const { user } = useUser()
     const handleLogout = async () => {
         await logout()
+        .then(() => {
+            navigate('/')
+              alert('Logout exitoso')
+          })
     }
 
     return (

@@ -10,8 +10,8 @@ export function SpecialistCard(doctor) {
         <div className="container">
 
             <div className="content">
-                <span>{doctor.doctor.name}</span>
-                <span>{doctor.doctor.specialist}</span>
+                <span className='text'>{doctor.doctor.name} - </span>
+                <span>- {doctor.doctor.specialist}</span>
             </div>
 
 

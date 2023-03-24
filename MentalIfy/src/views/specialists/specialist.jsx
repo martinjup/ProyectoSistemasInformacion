@@ -15,7 +15,7 @@ export function Specialist() {
         <div>
             <UserNavbar />
             <SMSContainer />
-            <h1>Bienvenido {user.name}</h1>
+            <h1 id='intro'>Bienvenido {user.name} estos son nuestros psicologos:</h1>
             <div className='container'>
                 {doctor.map(d=>(
                     <SpecialistCard doctor={d} key={d.CIP}/>

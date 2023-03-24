@@ -179,3 +179,9 @@ button{
     height: 200px;
     text-align: left;
 }
+
+.phoneFT{
+    width: 50%;
+}
+
+.hide{display: none;}
