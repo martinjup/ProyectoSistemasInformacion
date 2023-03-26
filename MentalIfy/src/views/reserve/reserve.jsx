@@ -6,6 +6,8 @@ import './reserve.css'
 import "react-datepicker/dist/react-datepicker.css";
 import { getDoctor } from "../../controllers/doctorController";
 
+
+
 // Pagina de reserva
 export const Reserve = () => {
   const [message, setMessage] = useState('');
@@ -68,6 +70,9 @@ export const Reserve = () => {
             <button type="submit" className='boton'>Reservar</button>
             </div>
         </form>
+        </div>
+        <div className="headboard">
+          <h3>Hola</h3>
         </div>
         </body>
         </div>
