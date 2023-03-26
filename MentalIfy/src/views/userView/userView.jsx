@@ -13,7 +13,8 @@ import Register from '../../img/Registro-img.png'
 import { useUser } from '../../contexts/UserContext'
 
 import {
-    CHAT_URL
+    CHAT_URL,
+    RESERVE_URL
 } from '../../constants/urls'
 //Vista del Usuario
 export function UserView() {
@@ -42,8 +43,8 @@ export function UserView() {
                         Mis chats</Link>
                 </div>
                 <div className='internalDiv'>
-                    <img src={Calendar} className='centralImg'></img>
-                    <Link className='linkText'>Calendario de citas</Link>
+                <Link className='linkText' to={RESERVE_URL}><img src={Calendar} className='centralImg'></img>
+                    Calendario de citas</Link>
                 </div>
             </div>
         </div>
