@@ -8,7 +8,7 @@ import { rediredt } from "../helper/redirect"
 export const signInWithGoogle = async () => {
     try {
         const result = await signInWithPopup(auth, googleProvider)
-        // console.log(result.user)
+        console.log(result)
 
     } catch (error) {
         console.error(error)

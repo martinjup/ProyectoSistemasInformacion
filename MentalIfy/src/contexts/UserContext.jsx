@@ -17,7 +17,15 @@ export function UserContentProvider({ children }) {
             if (firebaseUser && !user) {
                 const userProfile = await getUserProfile(firebaseUser.email);
 
-                setUser(userProfile);
+                if(userProfile== null){
+                    setUser({
+                        id: firebaseUser.uid,
+                        email: firebaseUser.email,
+                        name: firebaseUser.displayName
+                    })
+                }else{
+                    setUser(userProfile) 
+                }
             } else {
                 setUser(null);
             }

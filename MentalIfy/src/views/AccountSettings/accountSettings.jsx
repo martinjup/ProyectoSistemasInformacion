@@ -53,7 +53,7 @@ export function AccountSettings() {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div id='title'>
                             <h4 className='smallBox'>Información básica</h4>
-                            <button className='changeData' onClick={toggleShowPassword}>Modificar datos</button>
+                            {/* <button className='changeData' onClick={toggleShowPassword}>Modificar datos</button> */}
                         </div>
                         {/* <div className='smallBox'>
                             <h4 className='smallLabel'>Nombre</h4>
@@ -62,22 +62,22 @@ export function AccountSettings() {
                         </div> */}
                         <div className='smallBox'>
                             <h4 className='smallLabel'>Sexo</h4>
-                            <select className={showPassword ? "genderValue" : "hide"} {...register("gender")}>
+                            <select className={"genderValue"} {...register("gender")}>
                                 <option disabled selected>--- Género ---</option>
                                 <option value="M">Masculino</option>
                                 <option value="F">Femenino</option>
                             </select>
-                            <label className={showPassword ? "hide" : "genderValue"}>{user.gender && ""}</label>
+                            <label className={showPassword ? "hide" : "genderValue"}></label>
                         </div>
                         <div className='smallBox'>
                             <h4 className='smallLabel'>Fecha de Nacimiento</h4>
-                            <input className={showPassword ? "calendarBox" : "hide"} type="number" placeholder='DD' name='day' {...register("day")} />
-                            <h1 className={showPassword ? "calendarText" : "hide"}>/</h1>
-                            <input className={showPassword ? "calendarBox" : "hide"} type="number" placeholder='MM' name='month' {...register("month")} />
-                            <h1 className={showPassword ? "calendarText" : "hide"}>/</h1>
-                            <input className={showPassword ? "calendarBox" : "hide"} type="number" placeholder='AAAA' name='year' {...register("year")} />
+                            <input className={"calendarBox"} type="number" placeholder='DD' name='day' {...register("day")} />
+                            <h1 className={"calendarText"}>/</h1>
+                            <input className={"calendarBox" } type="number" placeholder='MM' name='month' {...register("month")} />
+                            <h1 className={"calendarText" }>/</h1>
+                            <input className={"calendarBox"} type="number" placeholder='AAAA' name='year' {...register("year")} />
                             <p className={showPassword ? "calendarText" : "hide"}>Introduzca su fecha de nacimiento.</p>
-                            <label className={showPassword ? "hide" : "calendarBox"}>{user.birthdate && " "}</label>
+                            <label className={showPassword ? "hide" : "calendarBox"}></label>
                         </div>
                         <h4 className='smallBox'>Información de contacto</h4>
                         {/* <div className='smallBox'>
@@ -87,11 +87,11 @@ export function AccountSettings() {
                         </div> */}
                         <div className='smallBox'>
                             <h4 className='smallLabel'>Teléfono</h4>
-                            <input type='tel' placeholder='Numero telefónico' name='phone' className={showPassword ? "phone" : "hide"} {...register("phone")}></input>
-                            <label className={showPassword ? "hide" : "smallImput"}>{user.phone && " "}</label>
+                            <input type='tel' placeholder='Numero telefónico' name='phone' className={"phone"} {...register("phone")}></input>
+                            <label className={"smallImput"}></label>
                         </div>
                         <div id='changeDataBox'>
-                            <button type="submit" className={showPassword ? "changeData" : 'hide'}>Guardar datos</button>
+                            <button type="submit" className={"changeData"}>Guardar datos</button>
                         </div>
                     </form>
                 </div>
