@@ -144,6 +144,8 @@ export function RegisterDoctor(props) {
           </div>
           <div>
             <button className='createAccount' type="submit">Crear cuenta</button>
+            <button className='createAccount' onClick={() => navigate("/register")}>Crear cuenta como paciente</button>
+
           </div>
 
         </div>

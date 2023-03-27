@@ -119,7 +119,7 @@ export function AccountSettingsFT(props) {
             <input type='text' id='resume' placeholder='Resumen Curricular' {...register("resume")}></input>
           </div>
           <div>
-            <input className='createAccount' type="submit" value="Crear cuenta" />
+            <button className='createAccount' type="submit" >Crear cuenta</button>
             {/* onClick={() => navigate("/")} */}
           </div>
 

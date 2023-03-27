@@ -103,6 +103,7 @@ export function Register(props) {
           <input className='calendarBox' type="number" placeholder='MM' name='month' {...register("month")} />
           <h1 className='calendarSplit'>/</h1>
           <input className='calendarBox' type="number" placeholder='AAAA' name='year' {...register("year")}/>
+          <h1 className='calendarSplit'>/</h1>
           <p className='calendarText'>Introduzca su fecha de nacimiento.</p>
         </div>
         <div className='gender'>
@@ -114,9 +115,11 @@ export function Register(props) {
 
         </div>
         <br />
+        <div id='botones'>
         <input className='createAccount' type="submit" value="Crear cuenta"/>
+        <button className='createAccount' onClick={() => navigate("/registerdoctor")}>Crear cuenta como especialista</button>
+        </div>
       </form>
-      <button className='createAccount' onClick={() => navigate("/registerdoctor")}>Crer cuenta como especialista</button>
     </div>
   );
 }

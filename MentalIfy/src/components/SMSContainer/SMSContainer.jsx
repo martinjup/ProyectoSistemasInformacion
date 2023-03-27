@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './SMSContainer.css'
+import './SMSContainer.css';
+import { CHAT_URL } from '../../constants/urls';
+
 
 
 export function SMSContainer(){
@@ -8,9 +10,9 @@ export function SMSContainer(){
     <div className='SMSContainer'>
         <div className='SMSBBox'>
             <div className='SMSSBox'>
-                <Link>Chatea con nuestros especialistas!</Link>
+                <Link to={CHAT_URL}>Chatea con nuestros especialistas!</Link>
             </div>
         </div>
-    </div>
+    </div>  
     )
 }
