@@ -5,8 +5,8 @@ import DatePicker from "react-datepicker";
 import './reserve.css'
 import "react-datepicker/dist/react-datepicker.css";
 import { getDoctor } from "../../controllers/doctorController";
-
-
+import { createReserve } from "../../controllers/reserveController";
+import { useUser } from "../../contexts/UserContext";
 
 // Pagina de reserva
 export const Reserve = () => {
@@ -14,6 +14,7 @@ export const Reserve = () => {
   const [isLoading, setIsloading] = useState(true)
   const [data, setData] = useState(null)
   const [date, setDate] = useState(new Date());
+  const {user, isLoandingUser} = useUser()
   const navigate = useNavigate()
   
   useEffect(()=>{
@@ -32,13 +33,21 @@ export const Reserve = () => {
     event.preventDefault();
 
     //access input values
-    const doctorName = event.target.doctor.value;
+    const doctorid = event.target.doctor.value;
     const doctorDate = event.target.doctor_date.value;
 
-    console.log('doctor 👉️', doctorName);
+    const reserve = {
+      doctorid: doctorid,
+      userid: user.id,
+      date: doctorDate
+    }
+    const reserveid = doctorid + user.id;
+    createReserve(reserve, reserveid)    
+
+    console.log('doctor 👉️', doctorid);
     console.log('fecha 👉️', doctorDate);
 
-   alert(`Usted ha reservado cita con, ${doctorName}, para la fecha ${doctorDate}`);
+   alert(`Usted ha reservado cita con, ${reserve.doctorid}, para la fecha ${reserve.date}`);
    navigate('/specialists')
 
     // Placeholder, eventualmente esto va a funcionar con firestore
@@ -70,9 +79,6 @@ export const Reserve = () => {
             <button type="submit" className='boton'>Reservar</button>
             </div>
         </form>
-        </div>
-        <div className="headboard">
-          <h3>Hola</h3>
         </div>
         </body>
         </div>

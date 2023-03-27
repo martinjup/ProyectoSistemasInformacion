@@ -4,9 +4,10 @@ import { db } from "../firebase/firebaseConfig"
 
 export function createReserve(data, uid) {
     const reserve = new Reserve({
-        date: data.date,
         doctorid: data.doctorid,
-        userid: data.doctorid,
+        userid: data.userid,
+        date: data.date,
+        id: uid,
     })
 
     console.log(reserve)
