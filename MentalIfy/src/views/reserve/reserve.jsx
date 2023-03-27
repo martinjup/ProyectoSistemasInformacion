@@ -7,14 +7,16 @@ import "react-datepicker/dist/react-datepicker.css";
 import { getDoctor } from "../../controllers/doctorController";
 import { createReserve } from "../../controllers/reserveController";
 import { useUser } from "../../contexts/UserContext";
+import { Paypal } from "../../components/Paypal";
 
 // Pagina de reserva
 export const Reserve = () => {
   const [message, setMessage] = useState('');
+  const {user, isLoandingUser} = useUser()
   const [isLoading, setIsloading] = useState(true)
   const [data, setData] = useState(null)
   const [date, setDate] = useState(new Date());
-  const {user, isLoandingUser} = useUser()
+ 
   const navigate = useNavigate()
   
   useEffect(()=>{
@@ -68,7 +70,7 @@ export const Reserve = () => {
             <div>
            <select name="doctor" id="doctor">
             {!isLoading && data.map(d =>(
-              <option value={d.id}>{d.name}</option>
+              <option value={d.id} id={d.id}>{d.name}</option>
             ))}
            </select>
             </div>
@@ -79,6 +81,7 @@ export const Reserve = () => {
             <button type="submit" className='boton'>Reservar</button>
             </div>
         </form>
+            <Paypal/>
         </div>
         </body>
         </div>
