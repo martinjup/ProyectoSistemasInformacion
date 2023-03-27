@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import { ACCOUNT_SETTINGS, HOME_URL } from '../../constants/urls'
 import { Link } from 'react-router-dom';
 import { useUser } from '../../contexts/UserContext'
+import { createUser } from '../../controllers/userController'
+import { createDoctor } from '../../controllers/doctorController'
 
 //Registro para doctor
 
@@ -13,7 +15,7 @@ export function AccountSettingsFT(props) {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate()
 
-  const { user } = useUser()
+  const { user, isLoandingUser } = useUser()
 
   const toggleShowPassword = (event) => {
     event.preventDefault();
@@ -23,48 +25,57 @@ export function AccountSettingsFT(props) {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-  const onSubmit = async (data) =>{
-    console.log(data)
-    // await registerWithEmail(data)
+  const onSubmit = async (data) => {
+
+    if (!showPassword) {
+      // crear paciente
+
+      const paciente = {
+        name: user.name,
+        email: user.email,
+        phone: data.phone,
+        role: "paciente",
+        gender: data.gender,
+        year: data.year,
+      }
+      createUser(paciente, user.id)
+
+    } else {
+      // crear especialista
+      const doctor = {
+        name: user.name,
+        email: user.email,
+        phone: data.phone,
+        role: "doctor",
+        gender: data.gender,
+        year: data.year,
+        resume: data.resume,
+        specialist: data.specialist,
+        university: data.university,
+        CIP: data.CIP
+      }
+      createDoctor(doctor, user.id)
+
+    }
   }
 
-  // const handleSigInWtihGoogle = async () => {
-  //   await signInWithGoogle()
-  //   // .then( async () =>{
-  //   const user = useUser()
-  //   console.log(user)
-  //   // })
-  // }
-
-  async function handleSigInWtihGoogle(){
-    await signInWithGoogle()
-    // const user = useUser()
-      // console.log(user)
-
-    .then(()=>{
-      navigate(ACCOUNT_SETTINGS)
-    })
-  }
 
   return (
     <div>
       <div id='top'>.</div>
-      <h3 className='headboard'>Hola {user.name}, necesitamos algunos datos extra para crear tu cuenta con exito</h3>
-      <div className='headboard'>
+      {!isLoandingUser && <h3 className='headboard'>Hola {user.name}, necesitamos algunos datos extra para crear tu cuenta con exito</h3>
+      }      <div className='headboard'>
         <button className='boton' onClick={toggleShowPassword}>Crear cuenta como {showPassword ? 'paciente' : 'psicologo'}</button>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className='personalData'>
-        <div className='hide'>
+          <div className='hide'>
             <div className='textLeftContainer'>
-              <label type="text" className='leftText' placeholder="Nombre" name='nombre' {...register('nombre', { required: true, maxLength: 20, pattern: /^[A-Za-z]+$/i  })} >{user.name}</label>
             </div>
             <br />
-            <label type="email" className='leftText2' id='email' name='email' placeholder="Correo electronico"  {...register("email", { required: true, pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i  })}>{user.email}</label>
 
-
-        </div>
-        <input type='number' placeholder='Numero telefónico' className='phoneFT' {...register("phone")}></input>
+          </div>
+          <input type='number' placeholder='Numero telefónico' className='phoneFT' {...register("phone")}></input>
 
         </div>
 
@@ -73,9 +84,9 @@ export function AccountSettingsFT(props) {
         <div className='calendar'>
           <input className='calendarBox' type="number" placeholder='DD'  {...register("day")} />
           <h1 className='calendarSplit'>/</h1>
-          <input className='calendarBox' type="number" placeholder='MM'  {...register("month")}/>
+          <input className='calendarBox' type="number" placeholder='MM'  {...register("month")} />
           <h1 className='calendarSplit'>/</h1>
-          <input className='calendarBox' type="number" placeholder='AAAA'  {...register("year")}/>
+          <input className='calendarBox' type="number" placeholder='AAAA'  {...register("year")} />
           <p className='calendarText'>Introduzca su fecha de nacimiento.</p>
         </div>
         <div className='gender'>
@@ -108,7 +119,7 @@ export function AccountSettingsFT(props) {
             <input type='text' id='resume' placeholder='Resumen Curricular' {...register("resume")}></input>
           </div>
           <div>
-            <input><button className='createAccount' type="submit" >Crear cuenta</button></input>
+            <input className='createAccount' type="submit" value="Crear cuenta" />
             {/* onClick={() => navigate("/")} */}
           </div>
 

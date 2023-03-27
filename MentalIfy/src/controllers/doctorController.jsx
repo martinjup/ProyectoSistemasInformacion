@@ -6,7 +6,7 @@ import { Doctor } from '../models/doctorModel'
 export function createDoctor(data, uid) {
 
     const doctor = new Doctor({
-        name: data.nombre + " " + data.apellido,
+        name: data.apellido != null ? data.nombre + data.apellido: data.name,
         email: data.email,
         role: "doctor",
         gender: data.gender,
