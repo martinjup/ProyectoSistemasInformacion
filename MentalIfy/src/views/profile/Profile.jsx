@@ -27,6 +27,11 @@ export function Profile() {
                 <div>
                 <span>{profile.name}</span>
                 <span>{profile.email}</span>
+                <span>{profile.CIP}</span>
+                <span>{profile.gender}</span>
+                <span>{profile.phone}</span>
+                <span>{profile.resume}</span>
+                <span>{profile.specialist}</span>
                 </div>
                )
 

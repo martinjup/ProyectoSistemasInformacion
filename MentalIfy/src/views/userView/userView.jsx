@@ -27,7 +27,7 @@ export function UserView() {
         <div>
             <UserNavbar />
             <SMSContainer />
-            <h1>Bienvenido {user.name}</h1>
+            {!isLoandingUser && <h1>Bienvenido {user.name}</h1>}
             <div className='containerr'>
 
                 <div className='internalDiv'>
