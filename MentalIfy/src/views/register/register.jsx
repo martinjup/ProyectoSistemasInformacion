@@ -9,7 +9,8 @@ import cEye from '../../img/closedEye.png'
 import { useNavigate } from "react-router-dom";
 import { registerWithEmail, signInWithGoogle } from '../../firebase/auth-service'
 import { useForm } from 'react-hook-form'
-import { ACCOUNT_SETTINGS } from '../../constants/urls'
+import { ACCOUNT_SETTINGS_FT } from '../../constants/urls'
+
 
 
 // Pagina de registro
@@ -21,7 +22,7 @@ export function Register(props) {
     await signInWithGoogle()
 
     .then(()=>{
-      navigate(ACCOUNT_SETTINGS)
+      navigate(ACCOUNT_SETTINGS_FT)
     })
   }
 
@@ -39,7 +40,6 @@ export function Register(props) {
 
   return (
     <div>
-      <div id='top'>.</div>
       <div className='headboard'>
         <h3>Crear una cuenta de Mentalify</h3>
         <p>¿Ya tienes una cuenta? Inicia Sesión</p>
@@ -91,7 +91,7 @@ export function Register(props) {
             <input type='tel' placeholder='Numero telefónico' name='phone' className='phone' {...register("phone")}></input>
           </div>
           <div className='rightContainer'>
-            <img id='privacyLogo' src={privacyLogo} alt='Privacy Policy logo' />
+            <img id='privacyLogo' src={privacyLogo} alt='P  rivacy Policy logo' />
           </div>
         </div>
 

@@ -26,9 +26,9 @@ export function UserView() {
     return (
         <div>
             <UserNavbar />
-            {/* <SMSContainer /> */}
-           {!isLoandingUser && <h1>Bienvenido {user.name}</h1>}
-            <div className='container'>
+            <SMSContainer />
+            <h1>Bienvenido {user.name}</h1>
+            <div className='containerr'>
 
                 <div className='internalDiv'>
                     <img src={Register} className='centralImg'></img>

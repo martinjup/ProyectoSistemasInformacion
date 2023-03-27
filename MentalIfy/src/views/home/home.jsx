@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { useNavigate } from "react-router-dom";
 import headerImg from '../../img/header.jpeg'
 import logo from '../../img/logo.png'
+import { useUser } from "../../contexts/UserContext"
 import {
 
     REGISTER_URL,
@@ -16,6 +17,7 @@ import {
 // Pagina principal  
 export function Home() {
     const navigate = useNavigate();
+    const { user } = useUser()
     return (
         <div className='content'>
 

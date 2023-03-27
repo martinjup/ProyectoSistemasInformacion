@@ -11,16 +11,16 @@ import { getDoctor } from '../../controllers/doctorController';
 export function Specialist() {
 
     const { user, isLoandingUser } = useUser()
-    const {doctor} = useDoctor()
+    const { doctor } = useDoctor()
     const [profile, setProfile] = useState(null);
     const [loadingData, setLoadingData] = useState(true)
 
-    useEffect(()=>{
-        async function fetchDoctor(){
+    useEffect(() => {
+        async function fetchDoctor() {
             const doc = await getDoctor()
             setProfile(doc)
-            setLoadingData(false) 
-             
+            setLoadingData(false)
+
         }
         fetchDoctor()
     }, [])
@@ -32,17 +32,22 @@ export function Specialist() {
         <div>
             <UserNavbar />
             <SMSContainer />
-           { !isLoandingUser && ( 
-           
-           <h1>Bienvenido {user.name}</h1>
-           )} 
 
 
-           { ! loadingData && <div className='container'>
-                {profile.map(d=>(
-                    <ProfileCard doctor={d} key={d.CIP}/>
-                ))}
-            </div>}
+
+            {!isLoandingUser && (
+
+                <h1>Bienvenido {user.name}</h1>
+            )}
+
+
+            {!loadingData && <div className='container'>
+                {profile.map(d => (
+                    <ProfileCard doctor={d} key={d.CIP} />))}</div>}
+
+
+
         </div>
     )
+
 }

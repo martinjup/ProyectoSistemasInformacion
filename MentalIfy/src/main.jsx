@@ -12,6 +12,7 @@ import { Chat } from './views/Chat/Chat'
 import { Layout } from './views/Layout/Layout'
 import {UserView} from './views/userView/userView'
 import {Specialist} from './views/specialists/specialist'
+import { AccountSettingsFT } from './views/AccountSettings/accountSettingsFT'
 import {
   HOME_URL,
   LOGIN_URL,
@@ -21,7 +22,8 @@ import {
   USER_VIEW_URL,
   ACCOUNT_SETTINGS,
   SPECIALIST_URL,
-  RESERVE_URL
+  RESERVE_URL,
+  ACCOUNT_SETTINGS_FT
 } from './constants/urls'
 import { Profile } from './views/profile/Profile'
 
@@ -43,6 +45,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path={SPECIALIST_URL} element={<Specialist />} />
           <Route path={ACCOUNT_SETTINGS} element={<AccountSettings />} />
           <Route path='/profile/:usrID' element={<Profile/>}/>
+          <Route path={ACCOUNT_SETTINGS_FT} element={<AccountSettingsFT />} />
           
         </Route>
 
