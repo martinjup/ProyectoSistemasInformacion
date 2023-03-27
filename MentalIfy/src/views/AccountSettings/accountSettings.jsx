@@ -1,104 +1,147 @@
-import './accountSettings.css'
-import { useUser } from '../../contexts/UserContext'
-import { UserNavbar } from '../../components/UserNavbar/UserNavbar';
-import { SMSContainer } from '../../components/SMSContainer/SMSContainer';
-import profileIcon from '../../img/Profile-icon.png';
-import { Link } from 'react-router-dom';
+import '../register/register.css'
 import React, { useState } from 'react'
+import { registerWithEmail, signInWithGoogle } from '../../firebase/auth-service'
 import { useForm } from 'react-hook-form'
-import { createUser } from '../../controllers/userController';
-import { User } from '../../models/userModel';
-//Pagina de ajustes
-export function AccountSettings() {
+import { useNavigate } from 'react-router-dom'
+import { ACCOUNT_SETTINGS, HOME_URL } from '../../constants/urls'
+import { Link } from 'react-router-dom';
+import { useUser } from '../../contexts/UserContext'
 
-    const [showPassword, setShowPassword] = useState(false);
+//Registro para doctor
 
-    const { user } = useUser()
+export function AccountSettings(props) {
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate()
 
-    const toggleShowPassword = (event) => {
-        event.preventDefault();
-        setShowPassword(!showPassword);
-    }
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { user } = useUser()
 
-    const onSubmit = async (data) => {
+  const toggleShowPassword = (event) => {
+    event.preventDefault();
+    setShowPassword(!showPassword);
+  }
 
-        try {
-            const userN = {
-                name: user.name,
-                email: user.email,
-                phone: data.phone,
-                role: "paciente",
-                gender: data.gender,
-                year: data.year,
-            }
-            console.log(userN)
-            createUser(userN, user.id)
-        } catch (error) {
-            console.log(error)
-        }
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  
+  const onSubmit = async (data) =>{
+    // console.log(data)
+    await registerWithEmail(data)
+  }
 
+  // const handleSigInWtihGoogle = async () => {
+  //   await signInWithGoogle()
+  //   // .then( async () =>{
+  //   const user = useUser()
+  //   console.log(user)
+  //   // })
+  // }
 
-    }
+  async function handleSigInWtihGoogle(){
+    await signInWithGoogle()
+    // const user = useUser()
+      // console.log(user)
+      
+    .then(()=>{
+      navigate(ACCOUNT_SETTINGS)
+    })
+  }
 
-
-    return (
-
-        <div>
-            <UserNavbar />
-            <SMSContainer />
-            <h1 id='header'>Ajustes de cuenta</h1>
-            <div id='bigBox'>
-                <div className='leftBox'>
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div id='title'>
-                            <h4 className='smallBox'>Información básica</h4>
-                            <button className='changeData' onClick={toggleShowPassword}>Modificar datos</button>
-                        </div>
-                        {/* <div className='smallBox'>
-                            <h4 className='smallLabel'>Nombre</h4>
-                            <input placeholder={user.name} className={showPassword ? "smallImput" : "hide"}></input>
-                            <label className={showPassword ? "hide" : "smallImput"}>{user.name}</label>
-                        </div> */}
-                        <div className='smallBox'>
-                            <h4 className='smallLabel'>Sexo</h4>
-                            <select className={showPassword ? "genderValue" : "hide"} {...register("gender")}>
-                                <option disabled selected>--- Género ---</option>
-                                <option value="M">Masculino</option>
-                                <option value="F">Femenino</option>
-                            </select>
-                            <label className={showPassword ? "hide" : "genderValue"}>{user.gender && ""}</label>
-                        </div>
-                        <div className='smallBox'>
-                            <h4 className='smallLabel'>Fecha de Nacimiento</h4>
-                            <input className={showPassword ? "calendarBox" : "hide"} type="number" placeholder='DD' name='day' {...register("day")} />
-                            <h1 className={showPassword ? "calendarText" : "hide"}>/</h1>
-                            <input className={showPassword ? "calendarBox" : "hide"} type="number" placeholder='MM' name='month' {...register("month")} />
-                            <h1 className={showPassword ? "calendarText" : "hide"}>/</h1>
-                            <input className={showPassword ? "calendarBox" : "hide"} type="number" placeholder='AAAA' name='year' {...register("year")} />
-                            <p className={showPassword ? "calendarText" : "hide"}>Introduzca su fecha de nacimiento.</p>
-                            <label className={showPassword ? "hide" : "calendarBox"}>{user.birthdate && " "}</label>
-                        </div>
-                        <h4 className='smallBox'>Información de contacto</h4>
-                        {/* <div className='smallBox'>
-                            <h4 className='smallLabel'>Correo electrónico</h4>
-                            <input placeholder={user.email} className={showPassword ? "smallImput" : "hide"}></input>
-                            <label className={showPassword ? "hide" : "smallImput"}>{user.email}</label>
-                        </div> */}
-                        <div className='smallBox'>
-                            <h4 className='smallLabel'>Teléfono</h4>
-                            <input type='tel' placeholder='Numero telefónico' name='phone' className={showPassword ? "phone" : "hide"} {...register("phone")}></input>
-                            <label className={showPassword ? "hide" : "smallImput"}>{user.phone && " "}</label>
-                        </div>
-                        <div id='changeDataBox'>
-                            <button type="submit" className={showPassword ? "changeData" : 'hide'}>Guardar datos</button>
-                        </div>
-                    </form>
-                </div>
-
+  return (
+    <div>
+      <div id='top'>.</div>
+      <h3 className='headboard'>Ajustes</h3>
+      <div className='headboard'>
+        <button className='boton' onClick={toggleShowPassword}>Soy {showPassword ? 'paciente' : 'psicologo'}</button>
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className='personalData'>
+        <div className='leftContainer'>
+            <div className='textLeftContainer'>
+              <input type="text" className='leftText' placeholder="Nombre" name='nombre' {...register('nombre', { required: true, maxLength: 20, pattern: /^[A-Za-z]+$/i  })} />
+              {errors.nombre?.type === 'required' && <p>El campo es requerido</p>}
+              <input type="text" className='leftText' placeholder="Apellido" name='apellido'   {...register("apellido", { required: true, maxLength: 20, pattern: /^[A-Za-z]+$/i  }) } />
             </div>
+            <br />
+            <input type="email" className='leftText2' id='email' name='email' placeholder="Correo electronico"  {...register("email", { required: true, pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i  })} />
+            
+            <div className='passwordContainer'>
+              <div className='password'>
+                
+                <input type="text"
+                  id={props.id}
+                  name={props.name}
+                  value={props.value}
+                  onChange={props.onChange}
+                  placeholder='Contraseña'
+                  {...register("password")}
+                />
+                
+              </div>
+
+              <div className='password'>
+                <input type="text"
+                  id={props.id}
+                  name={props.name}
+                  value={props.value}
+                  onChange={props.onChange}
+                  placeholder='Confirmar contraseña'
+                />
+                
+              </div>
+            </div>
+            <br />
+            <input type='tel' placeholder='Numero telefónico' name='phone' className='phone' {...register("phone")}></input>
+          </div>
+        <br />
+
+          
+        </div>
+
+        <div className='separator'>.</div>
+
+        <div className='calendar'>
+          <input className='calendarBox' type="number" placeholder='DD'  {...register("day")} />
+          <h1 className='calendarSplit'>/</h1>
+          <input className='calendarBox' type="number" placeholder='MM'  {...register("month")}/>
+          <h1 className='calendarSplit'>/</h1>
+          <input className='calendarBox' type="number" placeholder='AAAA'  {...register("year")}/>
+          <p className='calendarText'>Introduzca su fecha de nacimiento.</p>
+        </div>
+        <div className='gender'>
+          <select className='genderValue'  {...register("gender")}>
+            <option disabled selected>---Género---</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option></select>
+        </div>
+        <br />
+
+        <div className='separator'>.</div>
+
+        <div className='specialist' >
+          <div className={showPassword ? "specialistData" : "hide"}>
+            <input type='number' placeholder='C.I. Colegio de Psicólogos'  {...register("CIP")}></input>
+            <input type='text' placeholder='Universidad egresada' {...register("university")}></input>
+            <select id='specialty'{...register("specialist")} >
+              <option disabled selected>---Especialidad---</option>
+              <option>Psicología Clínica</option>
+              <option value="Psicología Educativa">Psicología Educativa</option>
+              <option value="Neuropsicología">Neuropsicología</option>
+              <option value="Psicología Social">Psicología Social</option>
+              <option value="Psicología Organizacional">Psicología Organizacional</option>
+              <option value="Psicología Deportiva">Psicología Deportiva</option>
+              <option value="Psicología Forense">Psicología Forense</option>
+              <option value="Psicología de la salud">Psicología de la salud</option>
+              <option value="Psicología del desarrollo">Psicología del desarrollo</option>
+              <option value="Psicología Ambiental">Psicología Ambiental</option>
+            </select>
+            <input type='text' id='resume' placeholder='Resumen Curricular' {...register("resume")}></input>
+          </div>
+          <div>
+            <button className='createAccount' type="submit" onClick={() => navigate("/")}>Actualizar perfil</button>
+          </div>
 
         </div>
-    )
 
+      </form>
+    </div >
+  );
 }

@@ -7,7 +7,7 @@ import ChatC from '../../components/chatC/chatC'
 export function Chat() {
   return (
     <div className='chat'>
-        <div className='container'>
+        <div className='containers'>
             <SideBar/> 
 
             <ChatC/>
