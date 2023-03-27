@@ -18,13 +18,14 @@ export function AccountSettingsFT(props) {
   const toggleShowPassword = (event) => {
     event.preventDefault();
     setShowPassword(!showPassword);
+    console.log(showPassword)
   }
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  
+
   const onSubmit = async (data) =>{
-    // console.log(data)
-    await registerWithEmail(data)
+    console.log(data)
+    // await registerWithEmail(data)
   }
 
   // const handleSigInWtihGoogle = async () => {
@@ -39,7 +40,7 @@ export function AccountSettingsFT(props) {
     await signInWithGoogle()
     // const user = useUser()
       // console.log(user)
-      
+
     .then(()=>{
       navigate(ACCOUNT_SETTINGS)
     })
@@ -60,11 +61,11 @@ export function AccountSettingsFT(props) {
             </div>
             <br />
             <label type="email" className='leftText2' id='email' name='email' placeholder="Correo electronico"  {...register("email", { required: true, pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i  })}>{user.email}</label>
-            
-              
+
+
         </div>
         <input type='number' placeholder='Numero telefónico' className='phoneFT' {...register("phone")}></input>
-          
+
         </div>
 
         <div className='separator'>.</div>
@@ -107,7 +108,8 @@ export function AccountSettingsFT(props) {
             <input type='text' id='resume' placeholder='Resumen Curricular' {...register("resume")}></input>
           </div>
           <div>
-            <button className='createAccount' type="submit" onClick={() => navigate("/")}>Crear cuenta</button>
+            <input><button className='createAccount' type="submit" >Crear cuenta</button></input>
+            {/* onClick={() => navigate("/")} */}
           </div>
 
         </div>
