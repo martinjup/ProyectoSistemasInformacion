@@ -8,6 +8,7 @@ export class Reserve {
         this.doctorid = doctorid;
         this.userid = userid;
         this.date = date;
+        this.id = reserveid;
     }
 
 
