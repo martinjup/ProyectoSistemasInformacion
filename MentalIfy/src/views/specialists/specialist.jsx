@@ -11,7 +11,6 @@ import { getDoctor } from '../../controllers/doctorController';
 export function Specialist() {
 
     const { user, isLoandingUser } = useUser()
-    const { doctor } = useDoctor()
     const [profile, setProfile] = useState(null);
     const [loadingData, setLoadingData] = useState(true)
 

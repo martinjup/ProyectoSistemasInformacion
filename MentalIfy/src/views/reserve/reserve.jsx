@@ -16,6 +16,8 @@ export const Reserve = () => {
   const [isLoading, setIsloading] = useState(true)
   const [data, setData] = useState(null)
   const [date, setDate] = useState(new Date());
+  const [reserve, setReserve] = useState(null)
+  const [show, setShow] = useState(false)
  
   const navigate = useNavigate()
   
@@ -31,28 +33,22 @@ export const Reserve = () => {
 
   
   const handleSubmit = event => {
-    console.log('handleSubmit ran');
     event.preventDefault();
 
     //access input values
     const doctorid = event.target.doctor.value;
     const doctorDate = event.target.doctor_date.value;
 
-    const reserve = {
+    const reserv = {
       doctorid: doctorid,
       userid: user.id,
-      date: doctorDate
+      date: doctorDate,
+      reserveid: doctorid + user.id
     }
-    const reserveid = doctorid + user.id;
-    createReserve(reserve, reserveid)    
+    
+    setReserve(reserv)
+    setShow(true)
 
-    console.log('doctor 👉️', doctorid);
-    console.log('fecha 👉️', doctorDate);
-
-   alert(`Usted ha reservado cita con, ${reserve.doctorid}, para la fecha ${reserve.date}`);
-   navigate('/specialists')
-
-    // Placeholder, eventualmente esto va a funcionar con firestore
     event.target.reset();
   };
 
@@ -78,10 +74,10 @@ export const Reserve = () => {
             <DatePicker selected={date} showTimeSelect dateFormat="MMMM d, yyyy h:mmaa" onChange={date => setDate(date)}  id="doctor_date" name="doctor_date"  type="text"  />
             <div>
             </div>
-            <button type="submit" className='boton'>Reservar</button>
+            <button type="submit" className='boton'>Confirmar</button>
             </div>
         </form>
-            <Paypal/>
+            {(!isLoandingUser && show) && <Paypal data={reserve} key={user.id}/>}
         </div>
         </body>
         </div>
