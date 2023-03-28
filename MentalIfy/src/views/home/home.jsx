@@ -19,7 +19,7 @@ export function Home() {
     const navigate = useNavigate();
     const { user } = useUser()
     return (
-        <div className='content'>
+        <div className='contents'>
 
             <div >
                 <header className='header home'>

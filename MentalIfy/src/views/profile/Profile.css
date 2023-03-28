@@ -1,0 +1,16 @@
+.contenedorGrande{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5%;
+}
+
+#contenedorImg{
+    width: 200px;
+}
+
+.miniContenedorTxt{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}

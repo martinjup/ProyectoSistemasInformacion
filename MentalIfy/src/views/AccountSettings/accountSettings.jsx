@@ -22,18 +22,39 @@ export function AccountSettings(props) {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   
-  const onSubmit = async (data) =>{
-    // console.log(data)
-    await registerWithEmail(data)
-  }
+  const onSubmit = async (data) => {
 
-  // const handleSigInWtihGoogle = async () => {
-  //   await signInWithGoogle()
-  //   // .then( async () =>{
-  //   const user = useUser()
-  //   console.log(user)
-  //   // })
-  // }
+    if (!showPassword) {
+      // crear paciente
+
+      const paciente = {
+        name: user.name,
+        email: user.email,
+        phone: data.phone,
+        role: "paciente",
+        gender: data.gender,
+        year: data.year,
+      }
+      createUser(paciente, user.id)
+
+    } else {
+      // crear especialista
+      const doctor = {
+        name: user.name,
+        email: user.email,
+        phone: data.phone,
+        role: "doctor",
+        gender: data.gender,
+        year: data.year,
+        resume: data.resume,
+        specialist: data.specialist,
+        university: data.university,
+        CIP: data.CIP
+      }
+      createDoctor(doctor, user.id)
+
+    }
+  }
 
   async function handleSigInWtihGoogle(){
     await signInWithGoogle()
