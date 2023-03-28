@@ -36,7 +36,7 @@ export function Specialist() {
 
             {!isLoandingUser && (
 
-                <h1>Bienvenido {user.name}</h1>
+                <h1 className='titulo'>Bienvenido {user.name}, esta es nuestra lista de Psicologos.</h1>
             )}
 
 

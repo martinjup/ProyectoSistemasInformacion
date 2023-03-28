@@ -59,6 +59,23 @@ export function AccountSettingsFT(props) {
     }
   }
 
+  // const handleSigInWtihGoogle = async () => {
+  //   await signInWithGoogle()
+  //   // .then( async () =>{
+  //   const user = useUser()
+  //   console.log(user)
+  //   // })
+  // }
+
+  async function handleSigInWtihGoogle(){
+    await signInWithGoogle()
+    // const user = useUser()
+      // console.log(user)
+
+    .then(()=>{
+      navigate(ACCOUNT_SETTINGS)
+    })
+  }
 
   return (
     <div>

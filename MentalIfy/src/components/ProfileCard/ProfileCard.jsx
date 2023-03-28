@@ -12,8 +12,8 @@ export function ProfileCard(profile) {
 
             <Link className='link' to={'/profile/' + profile.doctor.id}>
                 <div className="content">
-                    <span>{profile.doctor.name}</span>
-                    <span>{profile.doctor.specialist}</span>
+                    <span>{profile.doctor.name}</span>-
+                    -<span>{profile.doctor.specialist}</span>
                 </div>
             </Link>
 
